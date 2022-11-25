@@ -23,7 +23,7 @@ export default function Navigation(props:Props) {
                     <Link href="https://google.com">Home</Link>
                     <Link href="https://google.com">Home</Link>
                 </div>
-                <label className={style.hamburgerMenu} for="unfold">
+                <label className={style.hamburgerMenu} htmlFor="unfold">
                     <span>
 
                     </span>

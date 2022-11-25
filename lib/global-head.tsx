@@ -1,8 +1,8 @@
 import Head from "next/head"
 
 interface head_props {
-  name:String
-  description:String
+  name:string
+  description:string
 }
 
 export default function Head_global(props:head_props) {
