@@ -14,14 +14,19 @@ export default function Navigation(props:Props) {
             <div className={style.logo}>
                 
             </div>
+
             <nav className={style.navigation}>
+                <div className={style.otherMobile}>
+                    <Link href="/search"><Search color="black"/></Link>
+                    <Link href="/cart"><Cart4 color="black"/></Link>
+                </div>
                 <input type="checkbox" name="unfold" id="unfold" hidden/>
                 <div className={style.links}>
-                    <Link href="https://google.com">Home</Link>
-                    <Link href="https://google.com">Home</Link>
-                    <Link href="https://google.com">Home</Link>
-                    <Link href="https://google.com">Home</Link>
-                    <Link href="https://google.com">Home</Link>
+                    <Link href="https://google.com"><h1>Home</h1></Link>
+                    <Link href="https://google.com"><h1>Home</h1></Link>
+                    <Link href="https://google.com"><h1>Home</h1></Link>
+                    <Link href="https://google.com"><h1>Home</h1></Link>
+
                 </div>
                 <label className={style.hamburgerMenu} htmlFor="unfold">
                     <span>
@@ -36,8 +41,8 @@ export default function Navigation(props:Props) {
                 </label>
             </nav>
             <div className={style.other}>
-                <Search color="black"/>
-                <Cart4 color="black"/>
+                <Link href="/search"><Search color="black"/></Link>
+                <Link href="/cart"><Cart4 color="black"/></Link>
             </div>
         </div>
     )
