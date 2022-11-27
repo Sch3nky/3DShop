@@ -7,7 +7,7 @@
 .content{
     width: 90%;
     position: relative;
-    margin: 200px auto 200px auto;
+    margin: 50px auto 50px auto;
     
 }
 
@@ -34,11 +34,12 @@
     grid-column-end: 4;
 }
 
+
 .description {
     width: 100%;
     position: relative;
 
-    margin-top: 100px;
+    margin-top: 50px;
     background-color: black;
     color: white;
 
@@ -46,20 +47,55 @@
     flex-direction: row;
     align-items: center;
     justify-content: stretch;
-    gap: 22px;
-    padding: 22px;
 }
 
 .description > .text{
-    width: 40%;
+    width: 70%;
+    padding: 22px;
 }
+
+.description > .text > h2{
+    font-size: 35px;
+    margin: 0;
+}
+
+.description > .text > p{
+    font-size: 22px;
+}
+
+.description > .text > button{
+    font-size: 25px;
+    border: none;
+    padding: 8px 30px;
+    border-radius: 9px;
+}
+
+.description > .text > button:hover, .description > .text > button:active{
+    opacity: 50%;
+}
+
 .description > .image{
     flex-grow: 1;
     background-color: red;
+    height: 30vw;
 }
 
-.description > .image > button{
-    position: absolute;
+
+.carousel {
+    width: 90%;
+    height: 500px;
+
+    margin: 50px auto 0 auto;
+
+    position: relative;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: 50px;
 }
-  
-  
+
+.carousel > div{
+    flex-grow: 1;
+    background-color: black;
+}
