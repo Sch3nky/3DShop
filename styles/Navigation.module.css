@@ -17,10 +17,18 @@
     margin: auto;
 }
 
+.main:has(.unfold:checked) {
+    justify-content: flex-end;
+}
+
 .main > .logo{
     height: 60px;
     width: 60px;
     background-color: black;
+}
+
+.main:has(.unfold:checked) > .logo{
+    display: none;
 }
 
 .main > .navigation{
@@ -41,7 +49,7 @@
 }
 
 .main > .navigation h1{
-    font-size: 35px;
+    font-size: 33px;
     margin: 0;
 }
 
@@ -56,6 +64,12 @@
         width: fit-content;
         height: 60px;
         background-color: inherit;
+    }
+    .main:has(.unfold:checked) > .navigation{
+        width: 100%;
+        background-color: black;
+        justify-content: flex-end;
+        border-radius: 24px;
     }
 }
 
@@ -80,6 +94,7 @@
     justify-content: center;
     align-items: center;
 
+    transition-duration: 0ms;
 }
 
 @media screen and (max-width: 890px) {
@@ -99,12 +114,31 @@
 }
 
 .main > .navigation > .hamburgerMenu > span{
+    position: relative;
     width: 70%;
 
     height: 4px;
     border-radius: 4px;
 
     background-color: black;
+
+    transition-duration: 0ms;
+}
+
+.main:has(.unfold:checked) > .navigation > .hamburgerMenu> span{
+    background-color: white;
+    position: absolute;
+}
+
+.main:has(.unfold:checked) > .navigation > .hamburgerMenu> span:nth-child(2){
+    display: none;
+}
+
+.main:has(.unfold:checked) > .navigation > .hamburgerMenu> span:first-child{
+    transform: rotate(45deg);
+}
+.main:has(.unfold:checked) > .navigation > .hamburgerMenu> span:last-child{
+    transform: rotate(-45deg);
 }
 
 .main > .navigation a{
@@ -124,6 +158,11 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+
+}
+
+.main:has(.unfold:checked) > .navigation > .otherMobile{
+    display: none;
 }
 
 @media screen and (max-width: 890px) {
@@ -136,6 +175,15 @@
     .main > .navigation > .otherMobile{
         display: none;
     }
+}
+
+.main > .other > button{
+    background: none;
+    border: none;
+}
+
+.main > .other > button:hover{
+    opacity: 50%;
 }
 
 .main > .other  svg, .main > .navigation > .otherMobile svg{
