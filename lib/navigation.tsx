@@ -25,7 +25,6 @@ export default function Navigation(props:Props) {
                 <div className={style.links}>
                     <Link href="/produkty"><h1>Produkty</h1></Link>
                     <Link href="/sochy"><h1>Sochy</h1></Link>
-                    <Link href="https://google.com"><h1>Home</h1></Link>
                     <Link href="/kontakt"><h1>Kontakt</h1></Link>
 
                 </div>
