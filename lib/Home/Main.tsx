@@ -1,47 +1,38 @@
-import styles_news from "../../styles/Home/newsSection.module.css"
 import styles from "../../styles/Home/main.module.css"
 
-export default function Main(){
+import Link from "next/link"
+import News from "./News"
+import Grid from "./Grid"
+
+interface Data {
+    data:any
+}
+
+export default function Main({data}:Data){
     return(
         <main className={styles.main}>
-            <section className={styles_news.main}>
 
-            </section>
+            <News data={data.news}/>
+
             <section className={styles.content}>
-                <div className={styles.grid}>
-                    <div className={styles.box1}>
-
-                    </div>
-                    <div className={styles.box2}>
-
-                    </div>
-                    <div className={styles.box3}>
-
-                    </div>
-                    <div className={styles.box4}>
-
-                    </div>
-                </div>
+                <Grid data={data.links}/>
 
                 <div className={styles.description}>
                     
                     <div className={styles.text}>
-                        <h2>Headline</h2>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                        </p>
+                        <h2>{data.description.headline}</h2>
 
-                        <button >
-                            Button
-                        </button>
+                        <p>
+                            {data.description.text}
+                        </p>
+                        <Link href={String(data.description.link)}>{data.description.link_text}</Link>
                     </div>
 
                     <div className={styles.image}>
-                        <img>
-                        
-                        </img>
+                        <img src="https://avatars.mds.yandex.net/i?id=84dbd50839c3d640ebfc0de20994c30d-4473719-images-taas-consumers&n=27&h=480&w=480" />
                     </div>
                 </div>
+
                 <div className={styles.carousel}>
                     <div>
                         
@@ -59,3 +50,5 @@ export default function Main(){
         </main>
     )
 }
+
+  

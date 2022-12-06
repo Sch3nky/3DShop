@@ -4,15 +4,28 @@ import Navigation from '../lib/navigation'
 import Footer from '../lib/footer'
 import Main from '../lib/Home/Main'
 
-export default function Home() {
+export default function Home({data}: any) {
+  console.log(typeof data)
   return (
     <div className={styles.container}>
       <Head_global name="3D Shop" description="Jsem E-Shop s 3D producty"/>
       <Navigation />
 
-      <Main />
+      <Main data={data.data}/>
 
       <Footer />
     </div>
   )
+}
+
+export async function getStaticProps(context:any) {
+
+  const res = await fetch("http://127.0.0.1:5000/get/")
+  const data = await res.json()
+
+  return {
+    props: {
+      data,
+    },
+  }
 }
