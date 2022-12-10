@@ -1,0 +1,48 @@
+.description {
+    width: 100%;
+    position: relative;
+
+    margin-top: 50px;
+    background-color: black;
+    color: white;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: stretch;
+    
+    .text{
+        width: 70%;
+        padding: 22px;
+        h1{
+            font-size: 35px;
+            margin: 0;
+        }
+        p{
+            font-size: 22px;
+        }
+        button{
+            font-size: 25px;
+            border: none;
+            padding: 8px 30px;
+            border-radius: 9px;
+            &:hover, &:active{
+                opacity: 50%;
+            }
+        }
+    }
+
+    .image{
+        flex-grow: 1;
+        background-color: red;
+        height: 30vw;
+        position: relative;
+        img{
+            object-fit: cover;
+            width: auto;
+            height: auto;
+            min-width: 100%;
+            min-height: 100%;
+        }
+    }
+}

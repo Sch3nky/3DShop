@@ -23,13 +23,18 @@
     justify-content: flex-end;
 }
 
-.main > .logo{
+.main > .logo_container{
+    flex: 1;
+    height: 60px;
+}
+
+.main > .logo_container  > .logo > div{
     height: 60px;
     width: 60px;
     background-color: black;
 }
 
-.main:has(.unfold:checked) > .logo{
+.main:has(.unfold:checked) > .logo_container{
     display: none;
 }
 
@@ -139,6 +144,7 @@
 .main:has(.unfold:checked) > .navigation > .hamburgerMenu> span:first-child{
     transform: rotate(45deg);
 }
+
 .main:has(.unfold:checked) > .navigation > .hamburgerMenu> span:last-child{
     transform: rotate(-45deg);
 }
@@ -151,6 +157,10 @@
 .main > .navigation a:hover{
     opacity: 50%;
     flex-grow: 1;
+}
+
+.main > .other{
+    flex: 1;
 }
 
 .main > .other, .main > .navigation > .otherMobile{

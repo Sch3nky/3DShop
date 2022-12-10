@@ -12,14 +12,18 @@ export default function Navigation(props:Props) {
 
     return (
         <div className={style.main}>
-            <a href="/" className={style.logo}>
-                
-            </a>
+            <div className={style.logo_container}>
+                <Link href="/" className={style.logo}>
+                    <div>
+                        
+                    </div>
+                </Link>
+            </div>
 
             <nav className={style.navigation}>
                 <div className={style.otherMobile}>
                     <Link href="/search"><Search color="black"/></Link>
-                    <Link href="/cart"><Cart4 color="black"/></Link>
+                    <Link href="/kosik"><Cart4 color="black"/></Link>
                 </div>
                 <input type="checkbox" className={style.unfold} name="unfold" id="unfold" hidden/>
                 <div className={style.links}>
@@ -42,7 +46,7 @@ export default function Navigation(props:Props) {
             </nav>
             <div className={style.other}>
                 <button><Search color="black"/></button>
-                <Link href="/cart"><Cart4 color="black"/></Link>
+                <Link href="/kosik"><Cart4 color="black"/></Link>
             </div>
         </div>
     )

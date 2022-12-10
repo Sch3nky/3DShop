@@ -20,8 +20,31 @@ export default function Home({data}: any) {
 
 export async function getStaticProps(context:any) {
 
-  const res = await fetch("http://127.0.0.1:5000/get/")
-  const data = await res.json()
+  //const res = await fetch("http://127.0.0.1:5000/get/")
+  //const data = await res.json()
+  const data = {"data":{
+    "news": {
+      "link": "/produkty",
+      "img_link": "https://iso.500px.com/wp-content/uploads/2015/10/paris_cover.jpeg"
+    },
+  
+    "links": [
+      {"link": "/asd", "img_link": "/asd"},
+      {"link": "/asd", "img_link": "/asd"},
+      {"link": "/asd", "img_link": "/asd"},
+      {"link": "/asd", "img_link": "/asd"}
+    ],
+  
+    "text_content": {
+      "headline": "The Lol",
+      "text": "lol",
+      "link": "/produkty",
+      "link_text": "Button",
+      "img_link": ""
+    },
+  
+    "products": ["ad", "ad", "ad"]
+  }}
 
   return {
     props: {
