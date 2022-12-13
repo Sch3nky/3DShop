@@ -1,9 +1,11 @@
 .main {
     width: calc(100% - 2*22px);
+    max-height: 100px;
+
     position: sticky;
     top: 0;
 
-    padding: 22px 0 22px 0;
+    padding: 20px 0 20px 0;
 
     color: white;
 
@@ -19,6 +21,13 @@
     z-index: 9999;
 }
 
+@media screen and (max-width: 370px) {
+    .main{
+        padding: 10px 0px;
+        width: calc(100% - 2*10px);
+    }
+}
+
 .main:has(.unfold:checked) {
     justify-content: flex-end;
 }
@@ -28,7 +37,7 @@
     height: 60px;
 }
 
-.main > .logo_container  > .logo > div{
+.main > .logo_container > .logo > div{
     height: 60px;
     width: 60px;
     background-color: black;

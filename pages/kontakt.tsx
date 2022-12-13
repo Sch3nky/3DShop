@@ -1,9 +1,9 @@
 
-import Head_global from '../../lib/global-head'
-import Form from '../../lib/Kontakt/Form'
-import Navigation from '../../lib/navigation'
+import Head_global from '../lib/global-head'
+import Form from '../lib/Kontakt/Form'
+import Navigation from '../lib/navigation'
 
-import styles from "../../styles/Kontakt/Kontakt.module.scss"
+import styles from "../styles/Kontakt/Kontakt.module.scss"
 
 export default function Home2() {
   return (

@@ -1,6 +1,8 @@
 .main{
     width: 90%;
 
+    max-width: 1440px;
+
     margin: 30px auto;
     display: flex;
     justify-content: space-between;
@@ -11,15 +13,129 @@
         flex: 1;
         position: relative;
         .basic_info{
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             .product_name{
-                margin: 0;
+                
+                margin: 0 0 20px 0;
                 font-size: 40px;
                 font-weight: 700;
             }
-        }
-        .navigation{
+            @media screen and (max-width: 350px) {
+                .product_name{
+                    margin: 0 0 4vw 0;
+                    font-size: 11.5vw;
+                }
+            }
+            .product_images{
+                width: 100%;
+                position: relative;
 
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 80px;
+
+                row-gap: 10px;
+
+                .selected_photo{
+                    max-height: 400px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: stretch;
+                    position: relative;
+                    padding: 0 45px;
+                    .action{
+
+                        width: 100%;
+                        height: 100%;
+                        position: absolute;
+                        top: 0;
+                        left: 0px;
+                        
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+
+                        button{
+                            height: 30%;
+                            min-width: 60px;
+                            max-width: 120px;
+                            width: 6vw;
+                            margin: 0;
+                            padding: 0;
+                            border: none;
+                            background: none;
+                            position: relative;
+
+                            &:hover{
+                                opacity: 50%;
+                            }
+
+                            svg{
+                                height: 100%;
+                                width: 100%;
+                                position: relative;
+                            }
+                        }
+                    }
+                    img{
+                        object-fit: contain;
+                        max-height: 100%;
+                        max-width: 100%;
+                        height: 100%;
+                        flex-grow: 1;
+                    }
+                }
+
+                .photo_galery{
+                    display: grid;
+                    grid-auto-flow: column;  
+                    column-gap: 10px;
+
+                    grid-template-rows: 1fr;
+                    grid-auto-columns: 80px;
+
+                    overflow: scroll;
+                    .test{
+                        background-color: black;
+
+                    }
+                }
+            }
+            @media screen and (max-width: 525px) {
+                .product_images{
+                    grid-template-rows: auto 15.2vw;
+    
+                    .selected_photo{
+                        max-height: 400px;
+                        padding: 0;
+                        .action{
+                            display: none;
+                        }
+                    }
+    
+                    .photo_galery{
+                        grid-auto-columns: 15.2vw;
+                    }
+                }
+            }
+            @media screen and (max-width: 420px) {
+                .product_images{
+                    grid-template-rows: auto 64px;
+    
+                    .selected_photo{
+                        max-height: 400px;
+                        padding: 0;
+                        .action{
+                            display: none;
+                        }
+                    }
+    
+                    .photo_galery{
+                        grid-auto-columns: 64px;
+                    }
+                }
+            }
         }
         .info{
             display: flex;
@@ -28,8 +144,42 @@
             gap: 20px;
 
             width: 100%;
-            .description{
 
+            position: relative;
+            .description{
+                h1{
+                    margin-top: 0;
+                    margin-bottom: 5px;
+                    font-size: 30px;
+                }
+                p{
+                    margin: 0;
+                }
+            }
+
+            .properties{
+                width: 100%;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                justify-content: space-evenly;
+                gap: 10px;
+                font-size: 20px;
+                font-weight: 300;
+                ul{
+                    flex: 1;
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    border-bottom: 2px solid gray;
+                    border-top: 3px solid gray;
+                    li{
+                        padding: 5px 10px;
+                        background-color: rgb(235, 235, 235);
+                        border-bottom: 1px solid gray;
+                    }
+                }
             }
         }
     }
@@ -42,12 +192,99 @@
         position: relative;
 
         .action_bar{
+            flex-grow: 1;
+            padding: 10px;
+
             position: sticky;
+            position: -webkit-sticky;
             top: 120px;
+
             margin-left: auto;
+
             width: 95%;
             height: 400px;
-            background-color: black;
+
+            background-color: #bfbfbf;
+            border-radius: 5px;
+            border: 1px solid gray;
+
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap:10px;
+
+            .options{
+                flex: 1;
+                flex-grow: 1;
+            }
+            .actions{
+                display: flex;
+                flex-direction: column;
+                align-items: stretch;
+                .info{
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                    h2{
+                        margin: 0;
+                    }
+
+                    .avalibility{
+                        color: rgb(28, 141, 0);
+                        font-size: 18px;
+                    }
+
+                    .price{
+                        font-size: 25px;
+                        font-weight: 500;
+                    }
+                }
+                .add_to_cart{
+                    flex-grow: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-end;
+                    margin: 10px 0;
+
+                    input[type="submit"]{
+                        padding: 5px 15px;
+                        font-size: 22px;
+
+                        border: 1px solid red;
+                        color: red;
+                        background: none;
+                        transition: all 400ms;
+                        &:hover{
+                            background-color: rgba(255, 0, 0, 0.2);
+                        }
+                        &:active{
+                            color: black;
+                            background-color: rgba(255, 0, 0, 0.9);
+                        }
+                    }
+                }
+            }
         }
+    }
+
+    @media screen and (max-width: 1180px) {
+        .action_bar_wrapper{
+            flex-grow: 1;
+            max-width: 33.9vw;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .action_bar_wrapper{
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .main{
+        width: 98%;
     }
 }

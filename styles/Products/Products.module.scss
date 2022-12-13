@@ -4,9 +4,8 @@
         margin: 0 auto 40px auto;
 
         header{
-            margin-bottom: 1rem;
-            margin-bottom: 3rem;
-
+            padding-bottom: 2rem;
+            border-bottom: 1px solid lightgrey;
             p{max-width: 51rem;}
         }
 
@@ -19,9 +18,12 @@
                 margin-top: 0px;
                 margin-left: 0px;
                 padding: 0px;
+                
                 list-style: none;
-                gap: 5.71429rem 2.14286rem;
+
+                gap: 5.71429rem 1rem;
                 grid-template-columns: repeat(auto-fill, minmax(14.6429rem, 1fr));
+
                 overflow: hidden;
 
                 .product{
