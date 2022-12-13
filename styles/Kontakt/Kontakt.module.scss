@@ -1,29 +1,127 @@
 .main{
-    width: 70%;
-    margin: 20px auto;
+    width: 90%;
+    margin: 50px auto 20px auto;
     position: relative;
-    text-align: center;
 
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 124px auto;
     gap: 40px;
 
     .headline{
-        font-size: 60px;
-        margin: 40px 0px;
+        font-size: 55px;
+        margin: 30px 0px;
     }
-    h1{
-        font-size: 30px;
+
+    @media screen and (max-width: 630px) {
+        .headline{
+            font-size: 8.7vw;
+            margin: 4.8vw 0px;
+        }
+    }
+
+    @media screen and (max-width: 530px) {
+        .headline{
+            font-size: 45px;
+            margin: 4.8vw 0px;
+        }
+    }
+
+    .form{
+        grid-row-start: 2;
     }
 
     .info {
-        text-align: left;
-        
+        grid-column-start: 2;
+        grid-row-start: 1;
+        grid-row-end: 3;
+
+        background-color: #dcdcdc;
+
+        border-radius: 5px;
+
+        padding: 0px 40px;
+
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 124px auto;
+        gap: 40px;
+        h2{
+            font-size: 37px;
+            margin: auto 0px;
+
+            height: fit-content;
+        }
+
+        .values{
+            ul{
+                list-style: none;
+                margin: 0;
+                padding-left: 0px;
+                font-size: 18px;
+            }
+        }
+
+        @media screen and (max-width: 330px) {
+            h2 {
+                font-size: 30px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1180px) {
+        .info {
+            padding: 0px 20px;
+        }
+    }
+
+    @media screen and (max-width: 940px) {
+        .info {
+            max-width: 100%;
+            width: 500px;
+            text-align: center;
+            margin: 0 auto;
+            grid-column-start:auto;
+            grid-row-start: auto;
+            grid-row-end: auto;
+            grid-template-rows: none;
+            gap: 20px;
+            padding: 40px 10px 30px 20px;
+        }
+    }
+
+    @media screen and (max-width: 540px) {
+        .info {
+            width: 100%;
+        }
     }
 }
 
 @media screen and (max-width: 1030px) {
     .main {
-        width: 80%;
+        width: 95%;
     }
 }
+
+@media screen and (max-width: 940px) {
+    .main {
+        grid-template-columns: 1fr;
+        grid-template-rows: none;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .main {
+        margin: 8vw auto 20px auto;
+        gap: 6.3vw
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .main {
+        margin: 30px auto 20px auto;
+        width: 97%;
+        gap: 20px
+    }
+}
+

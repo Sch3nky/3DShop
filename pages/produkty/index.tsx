@@ -71,6 +71,78 @@ function Products() {
                             </div>
                         </li>
 
+                        <li className={styles.product}>
+                            <a className={styles.link}>
+                                <div className={styles.image}>
+                                    <img src="https://cdn.prusa3d.com/content/images/product/list/2599.jpg"/>
+                                </div>
+                                <div className={styles.name}>
+                                    <h2>
+                                        Small pipi
+                                    </h2>
+                                </div>
+                                <div className={styles.info}>
+                                    <h4 className={styles.avalible}>Dostupné</h4>
+                                    <h3>CZK 579</h3>
+                                </div>
+
+                            </a>
+                            <div className={styles.actions}>
+                                <button className={styles.buy}>
+                                    <Cart2 color="red"/>
+                                    <h3>Koupit</h3>
+                                </button>
+                            </div>
+                        </li>
+
+                        <li className={styles.product}>
+                            <a className={styles.link}>
+                                <div className={styles.image}>
+                                    <img src="https://cdn.prusa3d.com/content/images/product/list/2599.jpg"/>
+                                </div>
+                                <div className={styles.name}>
+                                    <h2>
+                                        Small pipi
+                                    </h2>
+                                </div>
+                                <div className={styles.info}>
+                                    <h4 className={styles.avalible}>Dostupné</h4>
+                                    <h3>CZK 579</h3>
+                                </div>
+
+                            </a>
+                            <div className={styles.actions}>
+                                <button className={styles.buy}>
+                                    <Cart2 color="red"/>
+                                    <h3>Koupit</h3>
+                                </button>
+                            </div>
+                        </li>
+
+                        <li className={styles.product}>
+                            <a className={styles.link}>
+                                <div className={styles.image}>
+                                    <img src="https://cdn.prusa3d.com/content/images/product/list/2599.jpg"/>
+                                </div>
+                                <div className={styles.name}>
+                                    <h2>
+                                        Small pipi
+                                    </h2>
+                                </div>
+                                <div className={styles.info}>
+                                    <h4 className={styles.avalible}>Dostupné</h4>
+                                    <h3>CZK 579</h3>
+                                </div>
+
+                            </a>
+                            <div className={styles.actions}>
+                                <button className={styles.buy}>
+                                    <Cart2 color="red"/>
+                                    <h3>Koupit</h3>
+                                </button>
+                            </div>
+                        </li>
+
 
                     </ul>
                 </section>

@@ -16,32 +16,41 @@ export default function Home2() {
           Kontaktujte nás
         </h1>
 
-        <section>
+        <section className={styles.form}>
           <Form />
         </section>
 
-        <section className='info'>
-          <h1>Kontaktní údaje</h1>
-          <ul>
-            <li>
-              Název firmy
-            </li>
-            <li>
-              IČO: 
-            </li>
-            <li>
-              Adressa:
-            </li>
-            <li>
-              Kontaktní osob: Ja
-            </li>
-            <li>
-              Telefon: 777 777 777
-            </li>
-            <li>
-              E-Mail:
-            </li>
-          </ul>
+
+        <section className={styles.info}>
+          <h2>Kontaktní údaje</h2>
+          <div className={styles.values}>
+            <ul>
+              <li>
+                Název firmy
+              </li>
+
+              <li>
+                IČO: 
+              </li>
+
+              <li>
+                Adressa:
+              </li>
+            </ul>
+            <ul>
+              <li>
+                Kontaktní osob: Ja
+              </li>
+
+              <li>
+                Telefon: 777 777 777
+              </li>
+
+              <li>
+                E-Mail:
+              </li>
+            </ul>
+          </div>
         </section>
       </main>
       

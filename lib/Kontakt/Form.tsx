@@ -8,23 +8,23 @@ function Form() {
         <form className={styles.form}>
             <div className={styles.nameContainer}>
                 <div className={styles.input_container}>
-                    <label htmlFor="">Křestní Jméno</label>
-                    <input type="text" placeholder="Jan"/>
+                    <label htmlFor="FirstName">Křestní Jméno</label>
+                    <input type="text" placeholder="Jan" id="FirstName"/>
                 </div>
                 <div className={styles.input_container}>
-                    <label htmlFor="">Přijmení</label>
-                    <input type="text" placeholder="Novák"/>
+                    <label htmlFor="LastName">Přijmení</label>
+                    <input type="text" placeholder="Novák" id="LastName"/>
                 </div>
             </div>
             
             <div className={styles.input_container}>
-                <label htmlFor="">E-Mail</label>
-                <input type="text" placeholder="name@exaple.com"/>
+                <label htmlFor="email">E-Mail</label>
+                <input type="text" placeholder="email@exaple.com" id="email"/>
             </div>
 
             <div className={styles.input_container}>
-                <label htmlFor="">Zpráva</label>
-                <textarea placeholder="Vaše zpráva"></textarea>
+                <label htmlFor="message">Zpráva</label>
+                <textarea placeholder="Vaše zpráva" id="message"></textarea>
             </div>
 
             <div className={styles.submitContainer}>
