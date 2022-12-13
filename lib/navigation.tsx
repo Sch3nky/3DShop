@@ -27,8 +27,8 @@ export default function Navigation(props:Props) {
                 </div>
                 <input type="checkbox" className={style.unfold} name="unfold" id="unfold" hidden/>
                 <div className={style.links}>
-                    <Link href="/produkty"><h1>Produkty</h1></Link>
-                    <Link href="/sochy"><h1>Sochy</h1></Link>
+                    <Link href="/produkty"><h1>E-Shop</h1></Link>
+                    <Link href="/sochy"><h1>Výroba na míru</h1></Link>
                     <Link href="/kontakt"><h1>Kontakt</h1></Link>
 
                 </div>
