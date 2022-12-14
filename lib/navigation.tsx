@@ -22,13 +22,13 @@ export default function Navigation(props:Props) {
 
             <nav className={style.navigation}>
                 <div className={style.otherMobile}>
-                    <Link href="/search"><Search color="black"/></Link>
+                    <Link href="/search" hidden><Search color="black"/></Link>
                     <Link href="/kosik"><Cart4 color="black"/></Link>
                 </div>
                 <input type="checkbox" className={style.unfold} name="unfold" id="unfold" hidden/>
                 <div className={style.links}>
                     <Link href="/produkty"><h1>E-Shop</h1></Link>
-                    <Link href="/sochy"><h1>Výroba na míru</h1></Link>
+                    <Link href="/namiru"><h1>Výroba na míru</h1></Link>
                     <Link href="/kontakt"><h1>Kontakt</h1></Link>
 
                 </div>
@@ -45,7 +45,7 @@ export default function Navigation(props:Props) {
                 </label>
             </nav>
             <div className={style.other}>
-                <button><Search color="black"/></button>
+                <button hidden><Search color="black"/></button>
                 <Link href="/kosik"><Cart4 color="black"/></Link>
             </div>
         </div>
