@@ -1,6 +1,5 @@
 .carousel {
     width: 100%;
-    height: 500px;
 
     margin: 50px auto 0 auto;
 
@@ -11,7 +10,83 @@
     justify-content: stretch;
     gap: 25px;
     div{
+        max-height: 500px;
+        aspect-ratio: 1/1.47;
         flex-grow: 1;
         background-color: black;
+    }
+}
+
+.controls{
+    display: none;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    svg{
+        height: 100%;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .carousel{
+        margin: 25px auto 0 auto;
+        gap: calc(25px /2);
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .carousel{
+        width: 350px;
+        overflow: hidden;
+        div{
+            flex-grow: 0;
+            min-width: 100%;
+        }
+    }
+    .controls{
+        height: 70px;
+        background: none;
+        display: flex;
+        position: absolute;
+        top: 50%;
+
+        &:is(.left){
+            left: 100px;
+            transform: translate(-100%, -50%);
+        }
+        &:is(.right){
+            right: 100px;
+            transform: translate(100%, -50%);
+        }
+    }
+}
+
+@media screen and (max-width: 570px) {
+    .carousel{
+        width: 61vw;
+    }
+    .controls{
+        height: 12.3vw;
+
+        &:is(.left){
+            left: 17.5vw;
+            transform: translate(-100%, -50%);
+        }
+        &:is(.right){
+            right: 17.5vw;
+            transform: translate(100%, -50%);
+        }
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .carousel{
+        width: 65vw;
+    }
+    .controls{
+        height: 51px;
     }
 }

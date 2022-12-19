@@ -6,7 +6,7 @@ function Buy_Info() {
             <Head_global name="Dodací a fakturační údaje"/>
             
             <main>
-                
+                Vaše objednávka byla úspěšně odeslána
             </main>
         </div>
     );

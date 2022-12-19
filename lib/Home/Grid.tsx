@@ -8,13 +8,13 @@ function Grid({data}: any) {
                 <img src="https://static.vecteezy.com/packs/media/vectors/term-bg-1-3d6355ab.jpg" loading="lazy"/>
             </Link>
             <Link href="/" className={styles.box2}>
-                <img src="https://static.vecteezy.com/packs/media/vectors/term-bg-1-3d6355ab.jpg" />
+                <img src="https://static.vecteezy.com/packs/media/vectors/term-bg-1-3d6355ab.jpg" loading="lazy" />
             </Link>
             <Link href="/" className={styles.box3}>
-                <img src="https://static.vecteezy.com/packs/media/vectors/term-bg-1-3d6355ab.jpg" />
+                <img src="https://static.vecteezy.com/packs/media/vectors/term-bg-1-3d6355ab.jpg" loading="lazy" />
             </Link>
             <Link href="/" className={styles.box4}>
-                <img src="https://static.vecteezy.com/packs/media/vectors/term-bg-1-3d6355ab.jpg" />
+                <img src="https://static.vecteezy.com/packs/media/vectors/term-bg-1-3d6355ab.jpg" loading="lazy" />
             </Link>
         </div>
     );

@@ -1,4 +1,5 @@
 .main{
+    max-width: 1260px;
     width: 90%;
     margin: 10px auto;
     min-height: calc(100vh - 120px);
@@ -21,10 +22,12 @@
         gap: 20px;
 
         position: relative;
+
         .arrow{
             height: 35%;
             width: auto;
         }
+
         .step{
             height: 100%;
             display: flex;
@@ -45,6 +48,25 @@
             color: black;
             svg{
                 color: black;
+            }
+        }
+    }
+
+    @media screen and (max-width: 330px) {
+        .basket_navigation{
+            flex-direction: column;
+            gap: 10px;
+            .arrow{
+                height: 30px;
+                transform: rotate(90deg);
+            }
+            .step{
+                height: 30px;
+                font-size: 25px;
+                gap: 5px;
+                svg{
+                    height: 80%;
+                }
             }
         }
     }
@@ -152,33 +174,28 @@
 
     .payment_wrapper{
         position: relative;
+    }
+}
 
-        .payment_container{
-            position: sticky;
-            top: 200px;
-            width: 100%;
-            height: 450px;
-            padding: 8px 10px;
-            border: 1px solid #a4a4a4 ;
+@media screen and (max-width: 1000px) {
+    .main{
+        width: 95%;
 
-            background-color: #dcdcdc;
-            border-radius: 0px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-
-            .continue{
-                width: 100%;
-                border: none;
-                background-color: rgb(211, 75, 22);
-                border-radius: 5px;
-                
-                color: white;
-
-                font-size: 24px;
-                padding: 8px 0;
-            }
+        grid-template-columns: 1fr;
+        grid-template-rows: 80px auto auto;
+    
+        row-gap: 20px;
+        column-gap: 0px;
+    
+        .basket_navigation{
+            grid-column-start: 1;
+            grid-column-end: 2;
         }
     }
+}
 
+@media screen and (max-width: 330px) {
+    .main{
+        grid-template-rows: auto auto auto;
+    }
 }

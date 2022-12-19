@@ -18,7 +18,24 @@
             min-height: 100%;
         }
     }
+    @media screen and (max-width: 900px) {
+        div{
+            height: 55.6vw;
+        }
+    }
+    @media screen and (max-width: 530px) {
+        div{
+            height: 295px;
+        }
+    }
+
+    @media screen and (max-width: 420px) {
+        div{
+            height: 70vw;
+        }
+    }
 }
 .link:hover{
     opacity: 90%;
 }
+

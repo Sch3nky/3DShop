@@ -12,8 +12,6 @@ interface sendJson {
 
 export default function Kontakt() {
   async function submit(x:sendJson){
-
-
     const response = await fetch("http://127.0.0.1:5000/post/new-message", 
                       {
                       method: 'POST', 
@@ -24,14 +22,11 @@ export default function Kontakt() {
                       }
                       )
       .then(r => {return r.json()});  
-
-    
-    console.log(response)
   }
+
   return (
-    <div>
+    <div className={styles.content}>
       <Head_global name="Kontakt"/>
-      <Navigation />
 
       <main className={styles.main}>
         <h1 className={styles.headline}>

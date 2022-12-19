@@ -1,0 +1,79 @@
+
+.hamburgerMenu{
+    position: relative;
+    display: none;
+    padding: 15px 10px;
+    border-radius: 15px;
+    width: 60px;
+    transition: width 0.4s;
+    overflow: hidden;
+    justify-content: flex-end;
+    .hamburger{
+        width: 40px;
+        height: 30px;
+        position: relative;
+        background-color: rgba(0, 0, 0, 0);
+        span{
+            padding: 0;
+            width: 100%;
+            height: 4px;
+            background-color: black;
+            display: block;
+            border-radius: 4px;
+            transition: all 0.4s ease-in-out;
+            position: absolute;
+        }
+        .bar1{top: 0;}
+        .bar2, .bar3{top: 13.5px;}
+        .bar3{
+            right: 0;
+        }
+        .bar4{bottom: 0;}
+    }
+
+    &:hover, &:active{
+        background-color: black;
+        span{
+            background-color: white;
+        }
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .hamburgerMenu{
+        display: flex;
+    }
+}
+
+.hamburgerMenuChecked{
+    width: 100%;
+    background-color: black;
+    transition: width 0.4s;
+    .hamburger{
+        margin-left: auto;
+        span{
+            background-color: white;
+        }
+        
+        .bar1{
+            transform: translateX(40px);
+            background-color: transparent;
+        }
+        
+        .bar2{
+            transform: rotate(45deg);
+        }
+        
+        .bar3{
+            transform: rotate(-45deg);
+        }
+        
+        .bar4{
+            transform: translateX(-40px);
+            background-color: transparent;
+        }
+        &:hover{
+            opacity: 50%;
+        }
+    }
+}
