@@ -16,7 +16,12 @@ function Order_Form({submit, submitRef}:any) {
         var send:data = {}
 
         for (let i=0; i<inputs.length;i++){
-            send[inputs[i].id] = inputs[i].value
+            if (inputs[i].type == "checkbox"){
+                send[inputs[i].id] = inputs[i].checked
+            }
+            else{
+                send[inputs[i].id] = inputs[i].value
+            }
         }
 
         submit(send)
@@ -75,11 +80,11 @@ function Order_Form({submit, submitRef}:any) {
 
             <div className={styles.form_actions}>
                 <div className={styles.action}>
-                    <input type="checkbox" id="checkbox1" checked={checkbox1}
+                    <input type="checkbox" id="invoice" checked={checkbox1}
                         onChange={handleChange}
                         className={styles.checkbox1} 
-                        name="scales" />
-                    <label htmlFor="checkbox1">Fakturační údaje stejné jako doručovací</label>
+                        name="scales"/>
+                    <label htmlFor="invoice">Fakturační údaje stejné jako doručovací</label>
                 </div>
             </div>
 

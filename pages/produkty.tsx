@@ -28,7 +28,7 @@ function Products({data}:any) {
                     <ul className={styles.grid}>
                         {data.products.map((product:any, i:any) =>
                             <li className={styles.product}>
-                                <a className={styles.link}>
+                                <a href={"/produkt/"+product.id} className={styles.link}>
                                     <div className={styles.image}>
                                         <img src={product.photos}/>
                                     </div>
@@ -44,7 +44,7 @@ function Products({data}:any) {
                                 </a>
 
                                 <div className={styles.actions}>
-                                    <button className={styles.buy} onClick={()=>{}}>
+                                    <button className={styles.buy} onClick={()=>{router.push("/produkt/"+product.id)}}>
                                         <Cart2 color="red"/>
                                         <h3>Koupit</h3>
                                     </button>
@@ -63,7 +63,6 @@ export default Products;
 export async function getStaticProps(context:any) {
     const res = await fetch("http://127.0.0.1:5000/get/products")
     const data = await res.json()
-  
     return {
       props: {
         data,

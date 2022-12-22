@@ -1,21 +1,22 @@
+import Head_global from "../../../lib/global-head";
 
-import Footer from "../../lib/footer";
-import Head_global from "../../lib/global-head";
-import Navigation from "../../lib/navigation";
-
-import styles from "../../styles/Cart/Basket.module.scss"
+import styles from "../../../styles/Cart/Basket.module.scss"
 
 import {Icon1Circle, Icon2Circle, ArrowRight} from "react-bootstrap-icons"
-import Action_module from "../../lib/Cart/Action";
-import Order_Form from "../../lib/Cart/Form";
+import Action_module from "../../../lib/Cart/Action";
+import Order_Form from "../../../lib/Cart/Form";
 import { useRouter } from "next/router";
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart } from '../../../redux/cart.slice';
 interface data  {
     [name:string]:any
 }
 function Objednavka() {
     const router = useRouter()
+    const dispatch = useDispatch();
 
+    console.log(router.query)
     const submitRef = React.useRef<HTMLElement>()
 
     function SubmitForm(){
@@ -23,19 +24,23 @@ function Objednavka() {
             submitRef.current.click()
         }
     }
+    const cart = useSelector((state:any) => state.cart);
 
     async function Create_Order(data:data){
+        data["shipmentID"] = router.query["shipment_id"]
+        data["paymentID"] = router.query["shipment_id"]
+        data["items"] = cart
         const response = await fetch("http://127.0.0.1:5000/post/new-order", 
                       {
                       method: 'POST', 
                       headers:{
-                        'content-type':"application/json"
+                        'content-type':"application/json",
                       },
                       body: JSON.stringify(data)
                       }
                       )
       .then(r => {return r.json()})
-      .then(json => {if (json.status == 0){router.push("info")}});  
+      .then(json => {if (json.status == 0){dispatch(removeFromCart(""));router.push("/kosik/info")};console.log(json)});  
     }
     return (  
         <>

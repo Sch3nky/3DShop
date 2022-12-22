@@ -1,10 +1,20 @@
 import '../styles/globals.css'
-import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
-import type { ReactElement, ReactNode } from 'react'
 import Layout from '../lib/Layout/Layout'
 
-export default function App({ Component, pageProps }: AppProps) {
+import { persistor, store }  from '../redux/store' 
 
-  return (<Layout><Component {...pageProps} /></Layout>)
+import { Provider } from 'react-redux';
+
+import { PersistGate } from 'redux-persist/integration/react'
+
+export default function App({ Component, pageProps }: AppProps) {
+  
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <Layout><Component {...pageProps} /></Layout>
+      </PersistGate>
+    </Provider>
+  )
 }

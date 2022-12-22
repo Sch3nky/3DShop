@@ -10,9 +10,10 @@ interface Props {
 
 }
 
-export default function Navigation({data}:any) {
+export default function Navigation() {
     const [unfold, unFoldChange] = useState(false)
-    console.log(data)
+    
+    const data = {itemCount: 10}
     return (
         <div className={style.main} onResize={() => {if (window.innerWidth >= 890){unFoldChange(false)}}}>
             <div className={style.logo_container}>
