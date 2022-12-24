@@ -11,6 +11,7 @@
     align-items: center;
     justify-content: stretch;
     
+    
     .text{
         flex: 1;
         padding: 15px;
@@ -106,9 +107,13 @@
         justify-content: center;
         align-items: stretch;
         height: 600px;
+        text-align: center;
         .text{
             width: 100%;
             height: fit-content;
+            a{
+                margin: 0 auto;
+            }
         }
         .image{
             width: 100%;

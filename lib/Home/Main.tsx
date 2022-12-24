@@ -1,6 +1,5 @@
 import styles from "../../styles/Home/main.module.css"
 
-import Link from "next/link"
 import News from "./News"
 import Grid from "./Grid"
 import TextContent from "./TextContent"

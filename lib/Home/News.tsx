@@ -2,8 +2,6 @@ import Link from "next/link";
 import styles_news from "../../styles/Home/newsSection.module.scss"
 
 function News({data}:any) {
-    console.log("lol")
-    console.log(data)
     return (
         <Link href={data.link} className={styles_news.link}>
             <div>

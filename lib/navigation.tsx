@@ -1,19 +1,25 @@
-import Image from "next/image"
 import Link from "next/link"
 import style from "../styles/Navigation.module.scss"
 
 import { Cart4, Search } from 'react-bootstrap-icons';
 import BurgerMenu from "./Navigation/BurgerMenu";
-import { use, useState } from "react";
+import { useState } from "react";
 
-interface Props {
-
-}
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function Navigation() {
     const [unfold, unFoldChange] = useState(false)
     
-    const data = {itemCount: 10}
+    const cart = useSelector((state:any) => state.cart);
+
+    function countCart(){
+        var quantity:number = 0
+        for (let i=0;i<cart.length;i++){
+            quantity = quantity+Number(cart[i].quantity)
+        }
+        return quantity
+    }
+    
     return (
         <div className={style.main} onResize={() => {if (window.innerWidth >= 890){unFoldChange(false)}}}>
             <div className={style.logo_container}>
@@ -30,9 +36,9 @@ export default function Navigation() {
                     <Link href="/kosik">
                         <div>
                             <Cart4 color="black"/>
-                            {data.itemCount !== 0&&
+                            {countCart() !== 0&&
                                 <div className={style.itemCount}>
-                                    <p>{data.itemCount}</p>
+                                    <div>{countCart()}</div>
                                 </div>
                             }
                         </div>
@@ -40,20 +46,21 @@ export default function Navigation() {
                 </div>
                 <input type="checkbox" className={style.unfold} onChange={(e) => {unFoldChange(e.target.checked)}} checked={unfold} name="unfold" id="unfold" hidden/>
                 <div className={style.links}>
-                    <Link href="/produkty"><h1>E-Shop</h1></Link>
-                    <Link href="/namiru"><h1>Výroba na míru</h1></Link>
-                    <Link href="/kontakt"><h1>Kontakt</h1></Link>
+                    <Link href="/produkty" onClick={() => unFoldChange(false)}><h1>E-Shop</h1></Link>
+                    <Link href="/namiru" onClick={() => unFoldChange(false)}><h1>Výroba na míru</h1></Link>
+                    <Link href="/kontakt" onClick={() => unFoldChange(false)}><h1>Kontakt</h1></Link>
                 </div>
                 <BurgerMenu htmlFor="unfold" checked={unfold}/>
             </nav>
+
             <div className={style.other}>
                 <button hidden><Search color="black"/></button>
                 <Link href="/kosik">
                     <div>
                         <Cart4 color="black"/>
-                        {data.itemCount !== 0&&
+                        {countCart() !== 0&&
                             <div className={style.itemCount}>
-                                <p>{data.itemCount}</p>
+                                <div>{countCart()}</div>
                             </div>
                         }
                     </div>

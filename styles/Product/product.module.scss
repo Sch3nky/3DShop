@@ -14,25 +14,28 @@
         position: relative;
         .basic_info{
             margin-bottom: 30px;
+
             .product_name{
                 
                 margin: 0 0 20px 0;
                 font-size: 40px;
                 font-weight: 700;
             }
+
             @media screen and (max-width: 350px) {
                 .product_name{
                     margin: 0 0 4vw 0;
                     font-size: 11.5vw;
                 }
             }
+
             .product_images{
                 width: 100%;
                 position: relative;
 
                 display: grid;
                 grid-template-columns: 1fr;
-                grid-template-rows: auto 80px;
+                grid-template-rows: auto 90px;
 
                 row-gap: 10px;
 
@@ -90,18 +93,26 @@
                 .photo_galery{
                     display: grid;
                     grid-auto-flow: column;  
-                    column-gap: 10px;
+                    column-gap: 5px;
 
-                    grid-template-rows: 1fr;
-                    grid-auto-columns: 80px;
+                    grid-template-rows: 90px;
+                    grid-auto-columns: min-content;
 
                     overflow: scroll;
-                    .test{
-                        background-color: black;
+                    .photo{
+                        position: relative;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        img{
+                            height: 100%;
+                            width: auto;
+                        }
 
                     }
                 }
             }
+
             @media screen and (max-width: 525px) {
                 .product_images{
                     grid-template-rows: auto 15.2vw;
@@ -119,6 +130,7 @@
                     }
                 }
             }
+            
             @media screen and (max-width: 420px) {
                 .product_images{
                     grid-template-rows: auto 64px;
@@ -178,21 +190,23 @@
                         padding: 5px 10px;
                         background-color: rgb(235, 235, 235);
                         border-bottom: 1px solid gray;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
                     }
                 }
             }
         }
     }
 
-    .action_bar_wrapper
-    {
+    .action_bar_wrapper{
         flex-grow: 1;
         max-width: 400px;
 
         position: relative;
 
         .action_bar{
-            flex-grow: 1;
             padding: 10px;
 
             position: sticky;
@@ -202,7 +216,7 @@
             margin-left: auto;
 
             width: 95%;
-            height: 400px;
+            height: fit-content;
 
             background-color: #bfbfbf;
             border-radius: 5px;
@@ -216,6 +230,48 @@
             .options{
                 flex: 1;
                 flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+                position: relative;
+                margin-bottom: 20px;
+                .option{
+                    width: 100%;
+
+                    h2, p, h3{
+                        margin: 0;
+                    }
+                    h2{
+                        margin-bottom: 10px;
+                    }
+                    
+                    .options_container{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: flex-start;
+                        gap: 5px;
+                        .radio{
+                            border: 1px solid black;
+                            padding: 2px 5px;
+                            text-align: center;
+                            &:has(input:checked){
+                                background: rgba(0, 0, 0, 0.2);
+                            }
+                            &:hover{
+                                opacity: 50%;
+                            }
+
+                            h3{
+                                font-size: 17px;
+                            }
+                            p{
+                                font-size: 15px;
+                                display: none;
+                            }
+                        }
+                    }
+                }
             }
             .actions{
                 display: flex;
@@ -264,6 +320,12 @@
                             background-color: rgba(255, 0, 0, 0.9);
                         }
                     }
+                }
+                .message{
+                    margin: 0;
+                    text-align: center;
+                    color: red;
+                    font-weight: 700;
                 }
             }
         }

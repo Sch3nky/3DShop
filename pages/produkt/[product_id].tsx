@@ -8,6 +8,7 @@ import { ChevronCompactRight, ChevronCompactLeft, Cart4 } from 'react-bootstrap-
 import { GetStaticProps } from 'next'
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/cart.slice';
+import { useState } from "react";
 
 type product = {
     id: number,
@@ -30,13 +31,74 @@ interface props{
 function Product({data}:props) {
     const router = useRouter()
     const dispatch = useDispatch();
-    async function AddToCart(self:EventTarget){
-        var cart_data:any = {
-            "id": data.id,
-            "options": []
+
+    const [price, changePrice] = useState(data.price)
+
+    function priceChange(){
+        const options_el = document.querySelectorAll("."+styles.option)
+        var p:number = Number(data.price)
+        for (let i=0; i<options_el.length ;i++){
+            try{
+                const input = options_el[i].querySelector('input[type="radio"]:checked')
+                if (input){
+
+                    p = p+Number(input.parentElement?.querySelector("p")?.innerText.replace("+", "").replace("CZK", ""))
+                }
+            }
+            catch{
+
+            }
+
         }
-        dispatch(addToCart(cart_data))
+        changePrice(p.toString())
     }
+
+    async function AddToCart(self:any){
+        const options_el = self.querySelectorAll("."+styles.option)
+        var options:any[] = []
+        self.querySelector("."+styles.message).innerText = ""
+        if (data.avalible){
+            try {
+                for (let i=0; i<options_el.length ;i++){
+                    let name = options_el[i].querySelector("h2")?.innerText
+                    const input = (options_el[i].querySelector('input[name='+name+']:checked') as HTMLInputElement)
+                    let value = input.value
+                    let price = input.parentElement?.querySelector("p")?.innerText.replace("+", "").replace("CZK", "")
+                    options.push({
+                        name: name,
+                        value: value,
+                        price: price
+                    })
+                }
+
+                var cart_data:any = {
+                    "id": data.id,
+                    "options": options
+                }
+
+                dispatch(addToCart(cart_data))
+            }
+            catch{
+                self.querySelector("."+styles.message).innerText = "Některé možnosti nejsou vybrané"
+            }
+        }
+        else{
+            self.querySelector("."+styles.message).innerText = "Produkt je momentáně nedostupný"
+        }
+    }
+
+    /*function readFile() {
+        if (!this.files || !this.files[0]) return;
+          
+        const FR = new FileReader();
+          
+        FR.addEventListener("load", function(evt) {
+          document.querySelector("#img").src         = evt.target.result;
+          document.querySelector("#b64").textContent = evt.target.result;
+        }); 
+          
+        FR.readAsDataURL(this.files[0]);
+    }*/
 
     return (  
         <>
@@ -57,34 +119,19 @@ function Product({data}:props) {
                                         <ChevronCompactRight />
                                     </button>
                                 </div>
-                                <img src={data.main_photo}/>
+                                <img src={"http://127.0.0.1:5000/"+data.main_photo}/>
                             </div>
                             <div className={styles.photo_galery}>
-                                <div className={styles.test}>
-
+                                <div className={styles.photo}>
+                                    <img src={"http://127.0.0.1:5000/"+data.main_photo}/>
                                 </div>
-                                <div className={styles.test}>
-
-                                </div>
-                                <div className={styles.test}>
-
-                                </div>
-                                <div className={styles.test}>
-
-                                </div>
-                                <div className={styles.test}>
-
-                                </div>
+                                {data.photos.map(
+                                    (item:any, key:number) => 
+                                    <div className={styles.photo} key={key}>
+                                        <img src={"http://127.0.0.1:5000/"+item}/>
+                                    </div>
+                                )}
                             </div>
-                        </div>
-                    </section>
-
-                    <section className={styles.mobile_actions}>
-                        <div className={styles.options}>
-
-                        </div>
-                        <div className={styles.actions}>
-
                         </div>
                     </section>
 
@@ -98,35 +145,16 @@ function Product({data}:props) {
                             </p>
                         </div>
                         <div id="properties" className={styles.properties}>
-                            <ul>
-                                <li>
-                                    Velikost
-                                </li>
-                                <li>
-                                    Záruční doba
-                                </li>
-                                <li>
-                                    dostupné barvy
-                                </li>
-                                <li>
-                                    Materiál
-                                </li>
-                            </ul>
-
-                            <ul>
-                                <li>
-                                    Velikost
-                                </li>
-                                <li>
-                                    Záruční doba
-                                </li>
-                                <li>
-                                    dostupné barvy
-                                </li>
-                                <li>
-                                    Materiál
-                                </li>
-                            </ul>
+                            {data.properties.length > 0 && 
+                                <ul>
+                                    {data.properties.map(
+                                        (item:any, key:number) => 
+                                        <li key={key}>
+                                            <div>{item.name}</div><div>{item.value}</div>
+                                        </li>
+                                    )}
+                                </ul>
+                            }
                         </div>
                     </section>
                 </div>
@@ -134,7 +162,24 @@ function Product({data}:props) {
                 <div className={styles.action_bar_wrapper}>
                     <form className={styles.action_bar} onSubmit={(event) => {AddToCart(event.target); event.preventDefault()}}>
                         <div className={styles.options}>
-
+                            {data.options.map(
+                                (item:any, key:number) => 
+                                <div key={key} className={styles.option}>
+                                    <h2>{item.name}</h2>
+                                    <div className={styles.options_container}>
+                                        {item.options.map(
+                                            (item2:any, key2:number) => 
+                                            <div key={key2} className={styles.radio}>
+                                                <input type="radio" name={item.name} onChange={priceChange} value={item2.name} id={item2.name} hidden/>
+                                                <label htmlFor={item2.name}>
+                                                    <h3>{item2.name}</h3>
+                                                    <p>+{item2.price}{data.price_currency}</p>
+                                                </label>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                         <div className={styles.actions}>
                             <div className={styles.info}>
@@ -143,12 +188,13 @@ function Product({data}:props) {
                                 </h2>
 
                                 <h2 className={styles.price}>
-                                    {data.price} {data.price_currency}
+                                    {price} {data.price_currency}
                                 </h2>
                             </div>
                             <div className={styles.add_to_cart}>
                                 <input type="submit" value="Koupit"/>
                             </div>
+                            <p className={styles.message}></p>
                         </div>
                     </form>
                 </div>

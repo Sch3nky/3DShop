@@ -98,9 +98,15 @@
             .services{
                 width: 100%;
                 display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
+                flex-direction: column;
+                align-items: stretch;
+                div{
+                    display: flex;
+                    flex-grow: 1;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                }
 
                 h3{
                     color: rgb(100, 100, 100);

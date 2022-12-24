@@ -5,12 +5,14 @@ import Form from '../lib/Kontakt/Form'
 import Navigation from '../lib/navigation'
 
 import styles from "../styles/Kontakt/Kontakt.module.scss"
+import { it } from 'node:test'
 
 interface sendJson {
   [name: string]: any
 }
 
-export default function Kontakt() {
+export default function Kontakt({data}:any) {
+  console.log(data)
   async function submit(x:sendJson){
     const response = await fetch("http://127.0.0.1:5000/post/new-message", 
                       {
@@ -42,30 +44,21 @@ export default function Kontakt() {
           <h2>Kontaktní údaje</h2>
           <div className={styles.values}>
             <ul>
-              <li>
-                Název firmy
-              </li>
-
-              <li>
-                IČO: 
-              </li>
-
-              <li>
-                Adressa:
-              </li>
-            </ul>
-            <ul>
-              <li>
-                Kontaktní osob: Ja
-              </li>
-
-              <li>
-                Telefon: 777 777 777
-              </li>
-
-              <li>
-                E-Mail:
-              </li>
+              {data.company_info.map(
+                (item:any, key:number) =>
+                <li key={key}>
+                  <h3>{item.name}</h3>
+                  <h3>{item.value}</h3>
+                </li>
+              )}
+              <br/>
+              {data.contact_info.map(
+                (item:any, key:number) =>
+                <li key={key}>
+                  <h3>{item.name}</h3>
+                  <h3>{item.value}</h3>
+                </li>
+              )}
             </ul>
           </div>
         </section>
@@ -73,4 +66,15 @@ export default function Kontakt() {
       
     </div>
   )
+}
+
+export async function getStaticProps(context:any) {
+  const res = await fetch("http://127.0.0.1:5000/get/kontakt")
+  const r_data = await res.json()
+  const data = r_data.data
+  return {
+    props: {
+      data,
+    },
+  }
 }

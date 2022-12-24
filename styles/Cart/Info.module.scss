@@ -1,0 +1,48 @@
+.main{
+    min-height: calc(100vh - 100px);
+    width: 98%;
+    margin: 0 auto 20px auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 50px;
+    svg{
+        height: 250px;
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .main{
+
+        gap: 25px;
+        svg{
+            height: 200px;
+            width: auto;
+        }
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .main{
+
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .main{
+
+        gap: 10px;
+        svg{
+            height: 150px;
+            width: auto;
+        }
+        h1{
+            font-size: 24px;
+        }
+    }
+}

@@ -30,6 +30,27 @@
     .products_wrapper{
         width: 100%;
         position: relative;
+        .filter_wrapper{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            margin: 10px 0;
+            .filter{
+                width: 200px;
+                border: 1px solid rgb(224, 224, 224);
+                color: rgb(42, 42, 42);
+                font-size: 1rem;
+                padding: 0.82em 2.5em 0.82em 0.82em;
+                border-radius: 4px;
+                background-color: white;
+                outline: none;
+                appearance: none;
+                cursor: pointer;
+                background-image: url(data:image/svg+xml,%3Csvg%20fill%3D%22%23808080%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20320%20512%22%20width%3D%220.8em%22%3E%3Cpath%20d%3D%22M151.5%20347.8L3.5%20201c-4.7-4.7-4.7-12.3%200-17l19.8-19.8c4.7-4.7%2012.3-4.7%2017%200L160%20282.7l119.7-118.5c4.7-4.7%2012.3-4.7%2017%200l19.8%2019.8c4.7%204.7%204.7%2012.3%200%2017l-148%20146.8c-4.7%204.7-12.3%204.7-17%200z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E);
+                background-repeat: no-repeat;
+                background-position: calc(100% - 0.8em) 0.7em;
+            }
+        }
         .grid{
             display: grid;
             width: 100%;
@@ -110,8 +131,8 @@
                         background: none;
 
                         padding: 5px 10px ;
-                        border: 1px solid red;
-                        color: red;
+                        border: 1px solid #ff8c00;
+                        color: #ff8c00;
 
                         align-items: center;
                         gap: 10px;
@@ -128,7 +149,7 @@
                         }
                     }
                     .buy:hover{
-                        background-color: rgba(255, 0, 0, 0.255);
+                        background-color: hsla(33, 100%, 50%, 0.25);
                     }
                     
                 }

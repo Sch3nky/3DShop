@@ -5,8 +5,7 @@ const cartSlice = createSlice({
   initialState: {cart:[]},
   reducers: {
     addToCart(state, action) {
-        console.log(state.cart)
-        const itemExists = state.cart.find((item) => (item.id === action.payload.id && item.options.toString() == action.payload.options.toString()));
+        const itemExists = state.cart.find((item) => (item.id === action.payload.id && JSON.stringify(item.options) == JSON.stringify(action.payload.options)));
         if (itemExists) {
         itemExists.quantity++;
         } else {
@@ -15,13 +14,13 @@ const cartSlice = createSlice({
         }
     },
     incrementQuantity: (state, action) => {
-      const item = state.cart.find((item) => item.id === action.payload);
+      const item = state.cart.find((item) => item.id === action.payload.id && JSON.stringify(item.options) == JSON.stringify(action.payload.options));
       item.quantity++;
     },
     decrementQuantity: (state, action) => {
-      const item = state.cart.find((item) => item.id === action.payload);
+      const item = state.cart.find((item) => item.id === action.payload.id && JSON.stringify(item.options) == JSON.stringify(action.payload.options));
       if (item.quantity === 1) {
-        const index = state.cart.findIndex((item) => item.id === action.payload);
+        const index = state.cart.findIndex((item) => item.id === action.payload.id && JSON.stringify(item.options) == JSON.stringify(action.payload.options));
         state.cart.splice(index, 1);
       } else {
         item.quantity--;
@@ -32,7 +31,7 @@ const cartSlice = createSlice({
         state.cart = []
       }
       else{
-        const index = state.findIndex((item) => item.id === action.payload);
+        const index = state.cart.findIndex((item) => item.id === action.payload.id && JSON.stringify(item.options) == JSON.stringify(action.payload.options));
         state.cart.splice(index, 1);
       }
     },
