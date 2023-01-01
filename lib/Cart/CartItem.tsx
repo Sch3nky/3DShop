@@ -22,43 +22,64 @@ function CartItem({id, quantity, del,plus,minus,options}:props) {
 
     const gData = data.data
 
-    //options.forEach(item => optionPrice + item.price)
-
     function getPrice(){
         var optionPrice:number = 0
         options.forEach((item:any) => optionPrice = optionPrice + Number(item.price))
         return optionPrice
     }
 
-
     return (
         <div className={styles.product}>
             <div className={styles.image}>
-
+                <img src={"http://127.0.0.1:5000/"+gData.main_photo}/>
             </div>
+
             <div className={styles.info}>
                 <div className={styles.text}>
-                    <h2>{gData.name}</h2>
-                    <p className={styles.avalibility}>
-                        {gData.avalible?"Dostupné":"Nedostupné"}
-                    </p>
-                </div>
+                    <div>
+                        <h2>{gData.name}</h2>
+                        <p>
+                            {options.map(
+                                (option: any) =>{
+                                    if (JSON.stringify(option) !== JSON.stringify(options[options.length-1])){
+                                        return option.name + ": " + option.value + ", "
+                                    }
+                                    else{
+                                        return option.name + ": " + option.value
+                                    }
+                                }
+                            )}
+                        </p>
+                    </div>
 
-                <div className={styles.amount}>
-                    <button onClick={() => {plus({id: id,options: options})}}>
-                        <ChevronUp />
-                    </button>
-                    <div className={styles.count}>{quantity}</div>
-                    <button onClick={() => {minus({id: id,options: options})}}>
-                        <ChevronUp />
-                    </button>
+                    {gData.avalible?
+                    <p className={styles.avalible}>
+                        Dostupné
+                    </p>
+                    :
+                    <p className={styles.unavalible}>
+                        "Nedostupné"
+                    </p>}
                 </div>
             </div>
 
             <div className={styles.actions}>
-                <h3>{(Number(gData.price)+getPrice())*quantity}</h3>
+                <div className={styles.amount}>
+                    <div className={styles.count}><p>{quantity}</p></div>
 
-                <button onClick={() => {del({id: id,options: options})}} >
+                    <div className={styles.buttons}>
+                        <button onClick={() => {plus({id: id,options: options})}}>
+                            <ChevronUp />
+                        </button>
+                        <button onClick={() => {minus({id: id,options: options})}}>
+                            <ChevronDown />
+                        </button>
+                    </div>
+                </div>
+
+                <h3>{(Number(gData.price)+getPrice())*quantity} {gData.price_currency}</h3>
+
+                <button className={styles.delete} onClick={() => {del({id: id,options: options})}} >
                     <Trash3 />
                 </button>
             </div>

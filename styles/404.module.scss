@@ -1,0 +1,33 @@
+.main{
+    height: calc(100vh - 90px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    gap: 10px;
+    h1, p, a{
+        margin: 0;
+        padding: 0;
+    }
+
+    h1{
+        font-weight: 300;
+        font-size: 180px;
+        letter-spacing: 15px;
+    }
+    p{
+        font-size: 25px;
+        font-weight: 300;
+        opacity: 70%;
+    }
+    a{
+        margin-top: 20px;
+        color: white;
+        background-color: #ff8c00;
+
+        padding: 8px 40px;
+
+        font-size: 25px;
+    }
+}

@@ -35,7 +35,7 @@ export default function Navigation() {
                     <Link href="/search" hidden><Search color="black"/></Link>
                     <Link href="/kosik">
                         <div>
-                            <Cart4 color="black"/>
+                            <Cart4 color="#404040"/>
                             {countCart() !== 0&&
                                 <div className={style.itemCount}>
                                     <div>{countCart()}</div>
@@ -57,7 +57,7 @@ export default function Navigation() {
                 <button hidden><Search color="black"/></button>
                 <Link href="/kosik">
                     <div>
-                        <Cart4 color="black"/>
+                        <Cart4 color="white"/>
                         {countCart() !== 0&&
                             <div className={style.itemCount}>
                                 <div>{countCart()}</div>

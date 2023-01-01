@@ -8,9 +8,10 @@ import Head_global from "../../lib/global-head";
 import styles from "../../styles/Cart/Basket.module.scss"
 
 import {Icon1Circle, Icon2Circle, ArrowRight} from "react-bootstrap-icons"
-
 import Action_module from "../../lib/Cart/Action";
 import CartItem from "../../lib/Cart/CartItem";
+
+import Link from "next/link";
 
 interface CartItem{
     id:any,
@@ -62,30 +63,39 @@ function Kosik({data}:any) {
             <Head_global name="Košík"/>
             
             <main className={styles.main}>
-                <section className={styles.basket_navigation}>
-                    <div className={[styles.step, styles.active].join(' ')}>
-                        <Icon1Circle />
-                        Košík
+                {cart.length > 0 &&
+                    <section className={styles.basket_navigation}>
+                        <div className={[styles.step, styles.active].join(' ')}>
+                            <Icon1Circle />
+                            Košík
+                        </div>
+                        <ArrowRight className={styles.arrow}/>
+                        <div className={styles.step}>
+                            <Icon2Circle />
+                            Objednávka
+                        </div>
+                    </section>
+                }           
+                {cart.length > 0?
+                    <section className={styles.products_wrapper}>
+                        <div className={styles.products_container}>
+                            {cart?.map((item:any, key:number) => (
+                                <CartItem id={item.id} quantity={item.quantity} del={Delete} plus={Add} minus={Decrease} options={item.options} key={key}/>
+                            ))}
+                        </div>
+                    </section>
+                    :
+                    <div className={styles.empty}>
+                        <h1>Váš košík je zatím prázdný.</h1>
+                        <Link href="/produkty">Začněte nakupovat</Link>
                     </div>
-                    <ArrowRight className={styles.arrow}/>
-                    <div className={styles.step}>
-                        <Icon2Circle />
-                        Objednávka
-                    </div>
-                </section>
-
-                <section className={styles.products_wrapper}>
-                    
-                    <div className={styles.products_container}>
-                        {cart?.map((item:any, key:number) => (
-                            <CartItem id={item.id} quantity={item.quantity} del={Delete} plus={Add} minus={Decrease} options={item.options} key={key}/>
-                        ))}
-                    </div>
-                </section>
-
-                <section className={styles.payment_wrapper}>
-                    <Action_module progress={0} services={[{name:"Doprava", cost: getPrice("shipping", Number(shipment_id))}]}  Cart={cart} onSubmit={Continue} ship_data={data.shipping} changeShipping={shipment_change}/>
-                </section>
+                }
+                
+                {cart.length > 0 &&
+                    <section className={styles.payment_wrapper}>
+                        <Action_module progress={0} services={[{name:"Doprava", cost: getPrice("shipping", Number(shipment_id))}]}  Cart={cart} onSubmit={Continue} ship_data={data.shipping} changeShipping={shipment_change}/>
+                    </section>
+                }
             </main>
             
         </>

@@ -87,12 +87,15 @@ function Action_module({progress, services, Cart, onSubmit, ship_data, changeShi
                     </div>
                 </div>
             </div>
-                
+            
+            {progress == 0 ?
             <button className={styles.continue} onClick={onSubmit}>
-                {progress == 0 ?
-                    "Pokračovat":"Dokončit"
-                }
+                Pokračovat
+            </button>:
+            <button className={styles.continue} onClick={() => onSubmit(getPrice())}>
+                Dokončit
             </button>
+            }   
         </div>
     );
 }

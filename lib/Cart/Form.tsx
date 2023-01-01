@@ -28,16 +28,16 @@ function Order_Form({submit, submitRef}:any) {
     }
     
     return (
-        <form className={styles.form} onSubmit={(e:any)=>{e.preventDefault();handleSubmit(e.target)}}>
+        <form className={styles.form} onSubmit={(e:any)=>{e.preventDefault();handleSubmit(e.target)}} autoComplete="on">
             <div className={styles.form_section}>
                 <h3>Kontaktní informace</h3>
                 <div className={styles.double}>
                     <div className={styles.input_container}>
-                        <input type="email" placeholder="email@example.com" id="email" required/>
+                        <input type="email" placeholder="email@example.com" id="email" autoComplete="email" required/>
                         <label htmlFor="email">E-Mail</label>
                     </div>
                     <div className={styles.input_container}>
-                        <input type="text" placeholder="+420 123 456 789" id="telefon" required/>
+                        <input type="text" placeholder="+420 123 456 789" id="telefon" autoComplete="phone"  required/>
                         <label htmlFor="telefon">Telefon</label>
                     </div>
                 </div>
@@ -49,26 +49,26 @@ function Order_Form({submit, submitRef}:any) {
                 </h3>
                 <div className={styles.double}>
                     <div className={styles.input_container}>
-                        <input type="text" placeholder="Jan" id="first_name" required/>
+                        <input type="text" placeholder="Jan" id="first_name" autoComplete="given-name"  required/>
                         <label htmlFor="first_name">Jméno</label>
                     </div>
                     <div className={styles.input_container}>
-                        <input type="text" placeholder="Novák" id="second_name" required/>
+                        <input type="text" placeholder="Novák" id="second_name" autoComplete="family-name"  required/>
                         <label htmlFor="second_name">Přijmení</label>
                     </div>
                 </div>
                 <div className={styles.input_container}>
-                    <input type="text" placeholder="Pražská 12/14" id="adress" required/>
-                    <label htmlFor="adress">Adresa - ulice a číslo</label>
+                    <input type="text" placeholder="Pražská 12/14" id="address" autoComplete="shipping address" required/>
+                    <label htmlFor="address">Adresa - ulice a číslo</label>
                 </div>
 
                 <div className={styles.double}>
                     <div className={styles.input_container}>
-                        <input type="text" placeholder="Praha" id="town" required/>
+                        <input type="text" placeholder="Praha" id="town" autoComplete="city" required/>
                         <label htmlFor="town">Město</label>
                     </div>
                     <div className={styles.input_container}>
-                        <input type="text" placeholder="100 01" id="psc" required/>
+                        <input type="text" placeholder="100 01" id="psc" autoComplete="zip" required/>
                         <label htmlFor="psc">PSČ</label>
                     </div>
                 </div>
@@ -96,37 +96,37 @@ function Order_Form({submit, submitRef}:any) {
                     </h3>
 
                     <div className={styles.input_container}>
-                        <input type="text" placeholder="Jan Novák" id="invoice_name" required/>
+                        <input type="text" placeholder="Jan Novák" id="invoice_name" autoComplete="organization" required/>
                         <label htmlFor="invoice_name">Jméno a Příjmení (název firmy)</label>
                     </div>
                     <div className={styles.double}>
                         <div className={styles.input_container}>
-                            <input type="text" placeholder="12345678" id="ico" />
+                            <input type="text" placeholder="12345678" id="ico" autoComplete="organization-id" />
                             <label htmlFor="ico">IČO</label>
                         </div>
                         <div className={styles.input_container}>
-                            <input type="text" placeholder="CZ12345678" id="dic" />
+                            <input type="text" placeholder="CZ12345678" autoComplete="vat-id" id="dic" />
                             <label htmlFor="dic">DIČ</label>
                         </div>
                     </div>
 
                     <div className={styles.input_container}>
-                        <input type="text" placeholder="Pražská 12/14" id="adress-invoice" required/>
-                        <label htmlFor="adress-invoice">Adresa - ulice a číslo</label>
+                        <input type="text" placeholder="Pražská 12/14" id="address-invoice" autoComplete="billing address" required/>
+                        <label htmlFor="address-invoice">Adresa - ulice a číslo</label>
                     </div>
 
                     <div className={styles.double}>
                         <div className={styles.input_container}>
-                            <input type="text" placeholder="Praha" id="town-invoice" required/>
+                            <input type="text" placeholder="Praha" id="town-invoice" autoComplete="city" required/>
                             <label htmlFor="town-invoice">Město</label>
                         </div>
                         <div className={styles.input_container}>
-                            <input type="text" placeholder="100 01" id="psc-invoice" required/>
+                            <input type="text" placeholder="100 01" id="psc-invoice" autoComplete="zip" required/>
                             <label htmlFor="psc-invoice">PSČ</label>
                         </div>
                     </div>
                     <div className={styles.input_container}>
-                        <input type="text" placeholder="Česká Republika" id="country-invoice" required/>
+                        <input type="text" placeholder="Česká Republika" id="country-invoice" autoComplete="country" required/>
                         <label htmlFor="country-invoice">Země</label>
                     </div>
                 </div>

@@ -7,40 +7,54 @@ import Action_module from "../../../lib/Cart/Action";
 import Order_Form from "../../../lib/Cart/Form";
 import { useRouter } from "next/router";
 import React from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import { removeFromCart } from '../../../redux/cart.slice';
+import { useSelector } from 'react-redux';
 interface data  {
     [name:string]:any
 }
 function Objednavka({data}:any) {
     const router = useRouter()
-    const dispatch = useDispatch();
     const shipment_id = router.query["shipment_id"]
     const [payment_id, payment_change] = React.useState()
+    const [price, price_change] = React.useState(0)
     const submitRef = React.useRef<HTMLElement>()
 
-    function SubmitForm(){
+    function SubmitForm(price:number){
         if (submitRef.current){
+            price_change(price)
             submitRef.current.click()
         }
     }
+
     const cart = useSelector((state:any) => state.cart);
 
     async function Create_Order(data:data){
-        data["shipmentID"] = shipment_id
-        data["paymentID"] = payment_id
-        data["items"] = cart
-        const response = await fetch("http://127.0.0.1:5000/post/new-order", 
-                      {
-                      method: 'POST', 
-                      headers:{
-                        'content-type':"application/json",
-                      },
-                      body: JSON.stringify(data)
-                      }
-                      )
-      .then(r => {return r.json()})
-      .then(json => {if (json.status == 0){dispatch(removeFromCart(""));router.push("/kosik/info")};console.log(json)});  
+        if (payment_id && price != 0){
+            data["shipmentID"] = shipment_id
+            data["paymentID"] = payment_id
+            data["items"] = cart
+            data["price"] = getTotalPrice()
+            await fetch("http://127.0.0.1:5000/post/new-order", 
+                        {
+                        method: 'POST', 
+                        headers:{
+                            'content-type':"application/json",
+                        },
+                        body: JSON.stringify(data)
+                        }
+                        )
+            .then(r => {return r.json()})
+            .then(json => {if (json.status == 0){router.push("/kosik/info")}});  
+        }
+    }
+
+    React.useEffect(() => {
+        if (cart.length == 0){
+            router.push("/kosik")
+        }
+    })
+
+    function getTotalPrice(){
+        return Number(price) + Number(getPrice("shipping", Number(shipment_id))) + Number(getPrice("payments", Number(payment_id)))
     }
 
     function getPrice(name:string, id:number){

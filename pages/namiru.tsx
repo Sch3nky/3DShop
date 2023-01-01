@@ -23,6 +23,10 @@ function sad() {
         <>
             <Head_global name='Výroba na míru'/>
             <main className={styles.main}>
+                <header>
+                    <h1>Objednávka na míru</h1>
+                </header>
+
                 <section className={styles.description}>
                     <div className={styles.text}>
                         <div>
@@ -39,14 +43,6 @@ function sad() {
                         alt="Elva dressed as a fairy" />
                     </div>
                 </section>
-
-                <TextContent data={{
-                    "headline": "The Lol",
-                    "text": "lol",
-                    "link": "/produkty",
-                    "link_text": "Button",
-                    "img_link": "" }
-                }/>
 
                 <section className={styles.timeline_container}>
                     {
@@ -167,19 +163,27 @@ function sad() {
                     </div>
                 </section>
 
+                <TextContent data={{
+                    "headline": "The Lol",
+                    "text": "lol",
+                    "link": "/produkty",
+                    "link_text": "Button",
+                    "img_link": "" }
+                }/>
+
                 <section className={styles.galery_container}>
                     <h2>Galerie naší práce</h2>
                     <ul className={styles.galery}>
                         <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/></li>
-                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg'/> </li>
-                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/> </li>
-                        <li className={styles.item}><img src='https://www.shutterstock.com/image-photo/mountains-under-mist-morning-amazing-260nw-1725825019.jpg'/> </li>
-                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/> </li>
-                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/> </li>
-                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/> </li>
-                        <li className={styles.item}><img src='https://www.shutterstock.com/image-photo/mountains-under-mist-morning-amazing-260nw-1725825019.jpg'/> </li>
-                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/> </li>
-                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/> </li>
+                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg'/></li>
+                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/></li>
+                        <li className={styles.item}><img src='https://www.shutterstock.com/image-photo/mountains-under-mist-morning-amazing-260nw-1725825019.jpg'/></li>
+                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/></li>
+                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/></li>
+                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/></li>
+                        <li className={styles.item}><img src='https://www.shutterstock.com/image-photo/mountains-under-mist-morning-amazing-260nw-1725825019.jpg'/></li>
+                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/></li>
+                        <li className={styles.item}><img src='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'/></li>
                     </ul>
                 </section>
             </main>

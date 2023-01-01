@@ -47,16 +47,16 @@ export default function Kontakt({data}:any) {
               {data.company_info.map(
                 (item:any, key:number) =>
                 <li key={key}>
-                  <h3>{item.name}</h3>
-                  <h3>{item.value}</h3>
+                  <h2>{item.name}</h2>
+                  <h2>{item.value}</h2>
                 </li>
               )}
               <br/>
               {data.contact_info.map(
                 (item:any, key:number) =>
                 <li key={key}>
-                  <h3>{item.name}</h3>
-                  <h3>{item.value}</h3>
+                  <h2>{item.name}</h2>
+                  <h2>{item.value}</h2>
                 </li>
               )}
             </ul>
