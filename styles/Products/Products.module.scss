@@ -130,19 +130,21 @@
                     .buy{
                         display: flex;
 
-                        background: none;
+                        background: #ff8c00;
 
                         padding: 5px 10px ;
                         border: 1px solid #ff8c00;
-                        color: #ff8c00;
+                        color: white;
 
                         align-items: center;
                         gap: 10px;
 
                         transition-duration: 200ms;
+                        
                         svg{
                             height: 18px;
                             width: auto;
+                            fill: white;
                         }
                         h3{
                             margin: 0;
@@ -150,7 +152,12 @@
                         }
                     }
                     .buy:hover{
-                        background-color: hsla(33, 100%, 50%, 0.25);
+                        opacity: 100%;
+                        background-color: rgba(255, 140, 0, 0.1);
+                        color: #ff8c00;
+                        svg{
+                            fill: #ff8c00;
+                        }
                     }
                     
                 }

@@ -19,9 +19,12 @@ export default function Main({data}:Data){
                 <Grid data={data.links}/>
 
                 <TextContent data={data.text_content}/>
+                
                 <div className={styles.product_wrapper}>
                     <Products />
                 </div>
+
+                <TextContent data={data.text_content}/>
             </section>
         </main>
     )

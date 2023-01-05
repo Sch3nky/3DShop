@@ -45,6 +45,12 @@
                 grid-auto-columns: min-content;
 
                 overflow: scroll;
+
+                -ms-overflow-style: none;  /* IE and Edge */
+                scrollbar-width: none;  /* Firefox */
+                &::-webkit-scrollbar{
+                    display: none;
+                }
                 .photo{
                     position: relative;
                     display: flex;
@@ -227,8 +233,14 @@
             align-items: stretch;
             gap:10px;
 
-            h1{
-                margin: 10px 0;
+            .top{
+                h1{
+                    margin: 5px 0;
+                }
+                p{
+                    margin: 0px 0 10px 0;
+                    color: #6c6c6c;
+                }
             }
 
             .options{
@@ -275,6 +287,7 @@
 
                             h3{
                                 font-size: 17px;
+                                font-weight: 300;
                             }
                             p{
                                 font-size: 15px;
@@ -348,14 +361,15 @@
                 .add_to_cart{
                     flex-grow: 1;
                     display: flex;
-                    align-items: center;
-                    justify-content: flex-end;
+                    flex-direction: column;
+                    align-items: stretch;
+                    justify-content: flex-start;
                     margin: 10px 0;
 
                     input[type="submit"]{
                         width: 100%;
-                        padding: 8px 0;
-                        font-size: 33px;
+                        padding: 6px 0;
+                        font-size: 32px;
                         font-weight: 500;
 
                         border: 2px solid #fa6831;
@@ -370,6 +384,12 @@
                             color: black;
                             background-color: rgba(255, 0, 0, 0.9);
                         }
+                    }
+
+                    p{
+                        text-align: right;
+                        margin: 5px 0;
+                        color: #6c6c6c;
                     }
                 }
                 .message{

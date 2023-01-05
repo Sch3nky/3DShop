@@ -8,36 +8,41 @@
 
     display: grid;
     grid-template-columns: 2fr 1fr;
-    grid-template-rows: 124px auto;
-    gap: 40px;
+    grid-template-rows: 72px auto auto;
+    gap: 20px 40px;
 
     .headline{
         font-size: 45px;
-        margin: 30px 0px;
+        margin: 20px 0px 0 0;
+    }
+
+    .text{
+        font-size: 15px;
+        margin: 0;
     }
 
     @media screen and (max-width: 630px) {
         .headline{
             font-size: 8.7vw;
-            margin: 4.8vw 0px;
+            margin: 4.8vw 0px 0 0;
         }
     }
 
     @media screen and (max-width: 530px) {
         .headline{
             font-size: 45px;
-            margin: 4.8vw 0px;
+            margin: 4.8vw 0px 0 0;
         }
     }
 
     .form{
-        grid-row-start: 2;
+        grid-row-start: 3;
     }
 
     .info {
         grid-column-start: 2;
         grid-row-start: 1;
-        grid-row-end: 3;
+        grid-row-end: 4;
 
         background-color: #dcdcdc;
 
@@ -47,8 +52,8 @@
 
         display: grid;
         grid-template-columns: 1fr;
-        grid-template-rows: 124px auto;
-        gap: 40px;
+        grid-template-rows: 92px auto;
+        gap: 20px;
         h2{
             font-size: 32px;
             margin: auto 0px;

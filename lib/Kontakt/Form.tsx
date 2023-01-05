@@ -1,5 +1,6 @@
-import { strict } from "assert"
+import { CloudArrowUpFill } from "react-bootstrap-icons"
 import styles from "../../styles/Kontakt/Form.module.scss"
+
 
 interface sendJson {
     [name: string]: any
@@ -22,9 +23,6 @@ function Form({submit}:any) {
         if(textarea !== null){
             send[textarea.id] = textarea.value
         }
-
-
-        console.log(send)
         submit(send)
     }
     return (
@@ -51,6 +49,13 @@ function Form({submit}:any) {
             </div>
 
             <div className={styles.submitContainer}>
+                <div className={styles.fileInput}>
+                    <input type="file" id="photo_input" accept="image/jpeg, image/png, image/gif" multiple hidden/>
+                    <label htmlFor="photo_input">
+                        <CloudArrowUpFill />
+                        <span>Kliknutím vyberte přílohy</span>
+                    </label>
+                </div>
                 <input type="submit" value="Odeslat" id="submit" onSubmit={() => {return false}} />
             </div>
         </form>

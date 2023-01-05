@@ -99,7 +99,39 @@
     .submitContainer{
         width: 100%;
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
+        .fileInput{
+            width: 100%;
+            h2{
+                margin: 0;
+                margin-bottom: 5px;
+            }
+            label{
+                color: #404040;
+                width: fit-content;
+                border: 2px solid currentColor;
+                font-size: 18px;
+                font-weight: 400;
+                text-overflow: ellipsis;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                overflow: hidden;
+                padding: 10px 19px;
+                position: relative;
+                svg{
+                    height: 21px;
+                    width: auto;
+                    vertical-align: middle;
+                    fill: currentColor;
+                }
+                &:hover{
+                    color: #fa6831;
+                }
+            }
+        }
         input[type="submit"]{
             font-size: 23px;
             font-weight: 500;

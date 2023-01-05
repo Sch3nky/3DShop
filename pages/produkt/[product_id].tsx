@@ -244,9 +244,12 @@ function Product({data}:props) {
             
                 <div className={styles.action_bar_wrapper}>
                     <form className={styles.action_bar} onSubmit={(event) => {AddToCart(event.target); event.preventDefault()}}>
-                        <h1 className={styles.product_name}>
-                            {data.name}
-                        </h1>
+                        <div className={styles.top}>
+                            <h1 className={styles.product_name}>
+                                {data.name}
+                            </h1>
+                            <p>Popisek, který zatím nejde nijak změnit a prý má bý krátký.</p>
+                        </div>
                         <div className={styles.options}>
                             {data.options.map(
                                 (item:any, key:number) => 
@@ -293,6 +296,7 @@ function Product({data}:props) {
                             </div>
                             <div className={styles.add_to_cart}>
                                 <input type="submit" value="Koupit"/>
+                                <p>Krátké info o dopravě</p>
                             </div>
                             <p className={styles.message}></p>
                         </div>

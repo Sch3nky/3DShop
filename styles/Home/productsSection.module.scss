@@ -1,92 +1,125 @@
-.carousel {
+.products_wrapper{
     width: 100%;
-
-    margin: 50px auto 0 auto;
-
     position: relative;
+   
 
-    display: flex;
-    align-items: stretch;
-    justify-content: stretch;
-    gap: 25px;
-    div{
-        max-height: 500px;
-        aspect-ratio: 1/1.47;
-        flex-grow: 1;
-        background-color: black;
-    }
-}
+    .grid{
+        display: grid;
+        width: 100%;
+        margin-top: 20px;
+        margin-left: 0px;
+        padding: 0px;
+        
+        list-style: none;
 
-.controls{
-    display: none;
-    padding: 0px;
-    margin: 0px;
-    border: none;
-    align-items: center;
-    justify-content: center;
-    svg{
-        height: 100%;
-        width: auto;
-    }
-}
+        gap: 20px 10px;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 
-@media screen and (max-width: 1050px) {
-    .carousel{
-        margin: 25px auto 0 auto;
-        gap: calc(25px /2);
-    }
-}
-
-@media screen and (max-width: 880px) {
-    .carousel{
-        width: 350px;
         overflow: hidden;
-        div{
-            flex-grow: 0;
-            min-width: 100%;
-        }
-    }
-    .controls{
-        height: 70px;
-        background: none;
-        display: flex;
-        position: absolute;
-        top: 50%;
 
-        &:is(.left){
-            left: 100px;
-            transform: translate(-100%, -50%);
-        }
-        &:is(.right){
-            right: 100px;
-            transform: translate(100%, -50%);
-        }
-    }
-}
+        .product{
+            
+            flex-flow: column wrap;
 
-@media screen and (max-width: 570px) {
-    .carousel{
-        width: 61vw;
-    }
-    .controls{
-        height: 12.3vw;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
 
-        &:is(.left){
-            left: 17.5vw;
-            transform: translate(-100%, -50%);
-        }
-        &:is(.right){
-            right: 17.5vw;
-            transform: translate(100%, -50%);
-        }
-    }
-}
+            .link {
+                width: 100%;
+                position: relative;
 
-@media screen and (max-width: 420px) {
-    .carousel{
-        width: 65vw;
-    }
-    .controls{
-        height: 51px;
+                .image{
+                    width: 100%;
+                    aspect-ratio: 1/1;
+                    position: relative;
+                    overflow: hidden;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    img{
+                        width: 100%;
+                        height: auto;
+                    }
+                }
+
+                .name{
+                    width: 100%;
+
+                    margin: 10px 0;
+                    h2{
+                        margin: 0;
+                        font-size: 20px;
+                        font-weight: 700;
+                    }
+                }
+
+                .info{
+                    h3, h4{
+                        margin: 0;
+                    }
+
+                    .avalible{
+                        color: rgb(71, 185, 43);
+                        margin-bottom: 5px;
+                    }
+                    .unavalible{
+                        color: red;
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+
+            .actions{
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+
+                .buy{
+                    display: flex;
+
+                    background: #ff8c00;
+
+                    padding: 5px 10px ;
+                    border: 1px solid #ff8c00;
+                    color: white;
+
+                    align-items: center;
+                    gap: 10px;
+
+                    transition-duration: 200ms;
+                    
+                    svg{
+                        height: 18px;
+                        width: auto;
+                        fill: white;
+                    }
+                    h3{
+                        margin: 0;
+                        font-weight: 700;
+                    }
+                }
+                .buy:hover{
+                    opacity: 100%;
+                    background-color: rgba(255, 140, 0, 0.1);
+                    color: #ff8c00;
+                    svg{
+                        fill: #ff8c00;
+                    }
+                }
+                
+            }
+        }
+
+        @media screen and (max-width: 550px) {
+            grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+        }
+        @media screen and (max-width: 480px) {
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        }
     }
 }
