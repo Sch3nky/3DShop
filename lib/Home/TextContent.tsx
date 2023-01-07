@@ -6,14 +6,20 @@ function TextContent({data}:any) {
         <div className={styles.description}>
             <div className={styles.text}>
                 <div>
-                    <h2>{data.headline}</h2>
-                    <p>
-                        {data.text}
-                    </p>
+                    {data.hedline !== ""&&
+                        <h2>{data.headline}</h2>
+                    }
+                    {data.text.map((part:string, key:number) => 
+                        <p key={key}>
+                            {part}
+                        </p>
+                    )}
                 </div>
-                <Link href={String(data.link)}>
-                    {data.link_text}
-                </Link>
+                {data.link !== ""&&
+                    <Link href={String(data.link)}>
+                        {data.link_text}
+                    </Link>
+                }
             </div>
 
             <div className={styles.image}>

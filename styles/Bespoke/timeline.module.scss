@@ -1,0 +1,52 @@
+
+.timeline{
+    padding: 0;
+    gap: 5px;
+    .item{
+        color: black;
+        background-color: #dcdcdc;
+        padding: 5px 10px 20px 7px;
+        position: relative;
+        border-radius: 5px;
+        h3{
+            font-size: 22px;
+            font-weight: 500;
+            margin: 0 0 10px 0;
+        }
+        p {
+            font-size: 17px;
+        }
+        z-index: 100;
+    }
+    .left{
+        margin: 0 15px 0 0;
+    }
+    .right{
+        margin: 0 0 0 15px;
+    }
+
+    .left::before{
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        background: #dcdcdc;
+        right: 0;
+        top: 7px;
+        transform: rotate(45deg) translate(28%, -28%);
+        border-radius: 2px;
+        z-index: -1;
+    }
+    .right::before{
+        position: absolute;
+        content: "";
+        height: 20px;
+        width: 20px;
+        background: #dcdcdc;
+        left: 0;
+        top: 7px;
+        transform: rotate(45deg) translate(-28%, 28%);
+        border-radius: 2px;
+        z-index: -1;
+    }
+}

@@ -9,24 +9,46 @@ interface sendJson {
 function Form({submit}:any) {
     const onSubmit = (e:any) => {
         const form:HTMLElement = e.target
-        const imputs = form.querySelectorAll("input")
+        const inputs = form.querySelectorAll("input")
         const textarea = form.querySelector("textarea")
         const send:sendJson = {
         }
 
-        for (let i=0; i<imputs.length; i++){
-            if (imputs[i].id != "submit"){
-                send[imputs[i].id] = imputs[i].value
+        var files = new FormData()
+        for (let i=0; i<inputs.length; i++){
+            if (inputs[i].id !== "submit" && inputs[i].id !== "file"){
+                send[inputs[i].id] = inputs[i].value
+            }
+            else if (inputs[i].type === "file"){
+                const input = inputs[i] as HTMLInputElement
+                if (input.files?.length){
+                    for (let i = 0; i < input.files.length; i++){
+                        files.append('file['+i+']', (input.files as FileList)[i])
+                    }
+                }
             }
         }
 
         if(textarea !== null){
             send[textarea.id] = textarea.value
         }
-        submit(send)
+
+        submit(send, files)
     }
+
+    function maxFiles(fileInput: HTMLInputElement) {
+        // Update the file count label
+        const fileCountLabel = fileInput.parentElement?.querySelector('span') as HTMLSpanElement;
+      
+        if (fileInput.files?.length) {
+        fileCountLabel.innerText = `Počet vybraných příloh: ${fileInput.files.length}`;
+        } else {
+        fileCountLabel.innerText = 'Kliknutím vyberte přílohy';
+        }
+        
+      }
     return (
-        <form className={styles.form} onSubmit={event => {onSubmit(event); return false}}>
+        <form className={styles.form} onSubmit={event => {onSubmit(event); event.preventDefault()}}>
             <div className={styles.nameContainer}>
                 <div className={styles.input_container}>
                     <input type="text" placeholder="Jan" id="FirstName" autoComplete="given-name" required/>
@@ -50,12 +72,13 @@ function Form({submit}:any) {
 
             <div className={styles.submitContainer}>
                 <div className={styles.fileInput}>
-                    <input type="file" id="photo_input" accept="image/jpeg, image/png, image/gif" multiple hidden/>
-                    <label htmlFor="photo_input">
+                    <input type="file" id="file" onChange={(e) => {maxFiles(e.target)}} multiple hidden/>
+                    <label htmlFor="file">
                         <CloudArrowUpFill />
                         <span>Kliknutím vyberte přílohy</span>
                     </label>
                 </div>
+
                 <input type="submit" value="Odeslat" id="submit" onSubmit={() => {return false}} />
             </div>
         </form>

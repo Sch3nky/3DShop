@@ -13,8 +13,9 @@ import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem';
 
 import Link from 'next/link';
+import TimelineComponent from '../lib/Bespoke/timeline';
 
-function sad() {
+function Bespoke({data}:any) {
     const [width, width_change] = useState(window.innerWidth)
     window.onresize = () => {
         width_change(window.innerWidth)
@@ -24,152 +25,19 @@ function sad() {
             <Head_global name='Výroba na míru'/>
             <main className={styles.main}>
                 <header>
-                    <h1>Objednávka na míru</h1>
+                    <h1>Výroba na míru</h1>
                 </header>
 
-                <section className={styles.description}>
-                    <div className={styles.text}>
-                        <div>
-                            <h2>{"The Lol"}</h2>
-                            <p>
-                                {"lol"}
-                            </p>
-                        </div>
-                    </div>
-
-                    <div className={styles.image}>
-                    <img
-                        src="https://media.istockphoto.com/id/1322277517/photo/wild-grass-in-the-mountains-at-sunset.jpg?s=612x612&w=0&k=20&c=6mItwwFFGqKNKEAzv0mv6TaxhLN3zSE43bWmFN--J5w="
-                        alt="Elva dressed as a fairy" />
-                    </div>
-                </section>
+                <TextContent data={data.text_content}/>
 
                 <section className={styles.timeline_container}>
-                    {
-                        width < 500?
-                        <Timeline position={"right"} sx={{
-                            [`& .${timelineItemClasses.root}:before`]: {
-                                flex: 0,
-                                padding: 0,
-                                },
-                            }} className={styles.timeline}>
-                            <TimelineItem>
-                                <TimelineSeparator>
-                                <TimelineDot />
-                                <TimelineConnector />
-                                </TimelineSeparator>
-                                <TimelineContent className={[styles.item, styles.right].join(" ")}>
-                                    <div>
-                                        lkl
-                                        jlj
-                                    </div>
-                                </TimelineContent>
-                            </TimelineItem>
-
-                            <TimelineItem>
-                                <TimelineSeparator>
-                                <TimelineDot />
-                                <TimelineConnector />
-                                </TimelineSeparator>
-                                <TimelineContent className={[styles.item, styles.right].join(" ")}>
-                                    <div>
-                                        lkl
-                                        jlj
-                                    </div>
-                                </TimelineContent>
-                            </TimelineItem>
-
-                            <TimelineItem>
-                                <TimelineSeparator>
-                                <TimelineDot />
-                                <TimelineConnector />
-                                </TimelineSeparator>
-                                <TimelineContent className={[styles.item, styles.right].join(" ")}>
-                                    <div>
-                                        lkl
-                                        jlj
-                                    </div>
-                                </TimelineContent>
-                            </TimelineItem>
-
-                            <TimelineItem>
-                                <TimelineSeparator>
-                                <TimelineDot />
-                                </TimelineSeparator>
-                                <TimelineContent className={[styles.item, styles.right].join(" ")}>
-                                    <div>
-                                        lkl
-                                        jlj
-                                    </div>
-                                </TimelineContent>
-                            </TimelineItem>
-                        </Timeline>
-                        :
-                        <Timeline position={"alternate"} className={styles.timeline}>
-                            <TimelineItem>
-                                <TimelineSeparator>
-                                <TimelineDot />
-                                <TimelineConnector />
-                                </TimelineSeparator>
-                                <TimelineContent className={[styles.item, styles.right].join(" ")}>
-                                    <div>
-                                        lkl
-                                        jlj
-                                    </div>
-                                </TimelineContent>
-                            </TimelineItem>
-
-                            <TimelineItem>
-                                <TimelineSeparator>
-                                <TimelineDot />
-                                <TimelineConnector />
-                                </TimelineSeparator>
-                                <TimelineContent className={[styles.item, styles.left].join(" ")}>
-                                    <div>
-                                        lkl
-                                        jlj
-                                    </div>
-                                </TimelineContent>
-                            </TimelineItem>
-
-                            <TimelineItem>
-                                <TimelineSeparator>
-                                <TimelineDot />
-                                <TimelineConnector />
-                                </TimelineSeparator>
-                                <TimelineContent className={[styles.item, styles.right].join(" ")}>
-                                    <div>
-                                        lkl
-                                        jlj
-                                    </div>
-                                </TimelineContent>
-                            </TimelineItem>
-
-                            <TimelineItem>
-                                <TimelineSeparator>
-                                <TimelineDot />
-                                </TimelineSeparator>
-                                <TimelineContent className={[styles.item, styles.left].join(" ")}>
-                                    <div>
-                                        lkl
-                                        jlj
-                                    </div>
-                                </TimelineContent>
-                            </TimelineItem>
-                        </Timeline>
-                    }
+                    <TimelineComponent data={data.timeline} />
                     <div className={styles.link}>
                         <Link href="/kontakt">Kontaktujte nás</Link>
                     </div>
                 </section>
 
-                <TextContent data={{
-                    "headline": "The Lol",
-                    "text": "lol",
-                    "link": "/produkty",
-                    "link_text": "Button",
-                    "img_link": "" }
-                }/>
+                <TextContent data={data.text_content_2}/>
 
                 <section className={styles.galery_container}>
                     <h2>Galerie naší práce</h2>
@@ -191,4 +59,15 @@ function sad() {
     );
 }
 
-export default sad;
+export async function getStaticProps(context:any) {
+    const res = await fetch("http://127.0.0.1:5000/get/on_order")
+    const data = await res.json()
+  
+    return {
+      props: {
+        data: data.data,
+      },
+    }
+  }
+
+export default Bespoke;

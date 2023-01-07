@@ -8,10 +8,20 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 50px;
+    gap: 25px;
     svg{
         height: 250px;
         width: auto;
+    }
+    a{
+        border: none;
+        background-color: #ff8c00;
+        border-radius: 5px;
+        
+        color: white;
+
+        font-size: 24px;
+        padding: 8px 20px;
     }
 }
 

@@ -20,7 +20,7 @@ export default function Navigation() {
         }
         return quantity
     }
-    console.log(router.pathname)
+
     return (
         <div className={style.main} onResize={() => {if (window.innerWidth >= 890){unFoldChange(false)}}}>
             <div className={style.logo_container}>

@@ -24,7 +24,7 @@ export default function Main({data}:Data){
                     <Products />
                 </div>
 
-                <TextContent data={data.text_content}/>
+                <TextContent data={data.text_content_2}/>
             </section>
         </main>
     )

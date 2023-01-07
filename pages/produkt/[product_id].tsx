@@ -322,8 +322,7 @@ function Product({data}:props) {
                                     {Number(price) * quantity} {data.price_currency}
                                 </h2>
                             </div>
-                            <div className={styles.add_to_cart}>
-                                
+                            <div className={styles.add_to_cart}>                           
                                 {
                                     added ?
                                     <div className={styles.confirmation}>
