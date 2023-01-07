@@ -95,7 +95,12 @@ function Action_module({progress, services, Cart, onSubmit, ship_data, changeShi
             <button className={styles.continue} onClick={() => onSubmit(getPrice())}>
                 Dokončit
             </button>
-            }   
+            }
+            {progress != 0 &&
+                <p className={styles.agreement}>
+                    Kliknutím na tlačítko "Dokončit" souhlasíte s Obchodními podmínkami a Zásadami ochrany osobních údajů.
+                </p>
+            }    
         </div>
     );
 }

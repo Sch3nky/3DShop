@@ -5,11 +5,12 @@ import { Cart4, Search } from 'react-bootstrap-icons';
 import BurgerMenu from "./Navigation/BurgerMenu";
 import { useState } from "react";
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useRouter } from "next/router";
 
 export default function Navigation() {
     const [unfold, unFoldChange] = useState(false)
-    
+    const router = useRouter()
     const cart = useSelector((state:any) => state.cart);
 
     function countCart(){
@@ -19,7 +20,7 @@ export default function Navigation() {
         }
         return quantity
     }
-    
+    console.log(router.pathname)
     return (
         <div className={style.main} onResize={() => {if (window.innerWidth >= 890){unFoldChange(false)}}}>
             <div className={style.logo_container}>
@@ -58,7 +59,7 @@ export default function Navigation() {
                 <Link href="/kosik">
                     <div>
                         <Cart4 color="white"/>
-                        {countCart() !== 0&&
+                        {(countCart() !== 0 && !router.pathname.includes("/kosik"))&&
                             <div className={style.itemCount}>
                                 <div>{countCart()}</div>
                             </div>

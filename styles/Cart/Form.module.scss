@@ -5,10 +5,6 @@
         gap: 5px;
         align-items: stretch;
 
-        &:not(:first-child){
-            margin-top: 20px;
-        }
-
         margin-bottom: 50px;
 
         h3{
@@ -30,7 +26,7 @@
     }
 
     .form_actions{
-
+        margin-bottom: 30px;
     }
 
     .input_container{
@@ -97,7 +93,7 @@
         }
 
         textarea{
-            height: 80px;
+            height: 100px;
         }
     }
 }

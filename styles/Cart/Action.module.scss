@@ -4,9 +4,9 @@
     width: 100%;
     min-height: 450px;
     padding: 20px 15px 10px 15px;
-    border: 1px solid #a4a4a4 ;
+    //border: 1px solid #a4a4a4 ;
 
-    background-color: #dcdcdc;
+    background-color: #e5e5e5;
     border-radius: 0px;
     display: flex;
     flex-direction: column;
@@ -136,9 +136,14 @@
         background-color: #ff8c00;
         border-radius: 5px;
         
-        color: black;
+        color: white;
 
         font-size: 24px;
         padding: 8px 0;
+    }
+    .agreement{
+        text-align: center;
+        font-size: 11px;
+        color: #9c9c9c;
     }
 }

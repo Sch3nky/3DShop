@@ -131,7 +131,10 @@ function Order_Form({submit, submitRef}:any) {
                     </div>
                 </div>
             }
-
+            <div className={styles.input_container}>
+                <textarea placeholder="Poznámka k objednávce" id="order_note"></textarea>
+                <label htmlFor="country-invoice">Poznámka k objednávce</label>
+            </div>
             <button ref={submitRef} type="submit" hidden/>
         </form>
     );

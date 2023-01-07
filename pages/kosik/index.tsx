@@ -7,7 +7,7 @@ import Head_global from "../../lib/global-head";
 
 import styles from "../../styles/Cart/Basket.module.scss"
 
-import {Icon1Circle, Icon2Circle, ArrowRight} from "react-bootstrap-icons"
+import {Icon1Circle, Icon2Circle, ChevronRight} from "react-bootstrap-icons"
 import Action_module from "../../lib/Cart/Action";
 import CartItem from "../../lib/Cart/CartItem";
 
@@ -69,7 +69,7 @@ function Kosik({data}:any) {
                             <Icon1Circle />
                             Košík
                         </div>
-                        <ArrowRight className={styles.arrow}/>
+                        <ChevronRight className={styles.arrow}/>
                         <div className={styles.step}>
                             <Icon2Circle />
                             Objednávka

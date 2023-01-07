@@ -84,6 +84,9 @@ function Objednavka({data}:any) {
 
                 <section>
                     <Order_Form submit={Create_Order} submitRef={submitRef}/>
+                    <button className={styles.backButton} onClick={() => {router.push("/kosik")}}>
+                        Zpět do košíku
+                    </button>
                 </section>
 
                 <section className={styles.payment_wrapper}>

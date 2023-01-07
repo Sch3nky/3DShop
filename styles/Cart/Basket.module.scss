@@ -1,4 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
 .main{
+    font-family: 'Questrial', sans-serif !important;
+    *{
+        font-family: 'Questrial', sans-serif !important;
+    }
     max-width: 1260px;
     width: 98%;
     margin: 10px auto;
@@ -10,6 +16,16 @@
 
     row-gap: 10px;
     column-gap: 20px;
+
+    .backButton{
+        border: none;
+        background-color: #ff8c00;
+        border-radius: 5px;
+        color: white;
+        font-size: 20px;
+        padding: 6px 20px;
+        margin: 10px 0;
+    }
 
     .basket_navigation{
         grid-column-start: 1;
@@ -98,7 +114,7 @@
             background-color: #ff8c00;
             border-radius: 5px;
             
-            color: black;
+            color: white;
 
             font-size: 24px;
             font-weight: 500;

@@ -65,6 +65,7 @@
                 position: relative;
                 color: #fff;
                 text-decoration: none;
+                padding-bottom: 5px;
                 &::before {
                     content: "";
                     position: absolute;
@@ -73,7 +74,7 @@
                     height: 2px;
                     bottom: 0;
                     left: 0;
-                    background-color: #FFF;
+                    background-color: rgb(250, 104, 49);
                     transform: scaleX(0);
                     transition: transform 0.2s ease-in-out;
                 }

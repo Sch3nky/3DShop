@@ -9,7 +9,7 @@ export default function Footer(props:any){
                 </div>
             </div>
             <div className={styles.copyright}>
-                © 2022-2022 Jakub Schenk
+                © 2022-2023 Jakub Schenk
             </div>
         </footer>
     )

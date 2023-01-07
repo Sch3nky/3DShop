@@ -1,12 +1,17 @@
+.headline {
+    font-size: 40px;
+    text-align: center;
+    font-weight: 300;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
 .products_wrapper{
     width: 100%;
     position: relative;
-   
-
     .grid{
         display: grid;
         width: 100%;
-        margin-top: 20px;
+        margin-top: 0px;
         margin-left: 0px;
         padding: 0px;
         

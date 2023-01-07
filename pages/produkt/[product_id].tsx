@@ -3,7 +3,7 @@ import Head_global from "../../lib/global-head";
 
 import styles from "../../styles/Product/product.module.scss"
 
-import {CloudArrowUpFill } from 'react-bootstrap-icons';
+import {CloudArrowUpFill, CheckCircle, ChevronUp, ChevronDown} from 'react-bootstrap-icons';
 
 import { GetStaticProps } from 'next'
 import { useDispatch } from 'react-redux';
@@ -34,6 +34,9 @@ function Product({data}:props) {
     const dispatch = useDispatch();
 
     const [price, changePrice] = useState(data.price)
+    const [quantity, changeQuantity] = useState(1)
+
+    const [added, changeAdd] = useState(false)
 
     const [currentImage, changeCurrentImage] = useState(data.main_photo)
     function priceChange(){
@@ -53,6 +56,25 @@ function Product({data}:props) {
 
         }
         changePrice(p.toString())
+    }
+
+    function clear(self:any){
+        const optionsEl = self.querySelectorAll(`.${styles.option}`);
+        for (let i = 0; i < optionsEl.length; i++) {
+            const name = optionsEl[i].querySelector('h2')?.innerText;
+            const input = optionsEl[i].querySelector(
+                `input[name=${name}]:checked`,
+              ) as HTMLInputElement;
+            input.checked = false
+        }
+        if (data.input_photos) {
+            // Select the photo input element
+            const photoInput = document.getElementById(
+                'photo_input',
+              ) as HTMLInputElement;
+            photoInput.value = ""
+            maxFiles(photoInput)
+        }
     }
 
     async function AddToCart(self: any) {
@@ -122,14 +144,21 @@ function Product({data}:props) {
       
                 // Add the product to the cart
                 dispatch(addToCart(cartData));
+                changeAdd(true)
+                clear(self)
+                setTimeout(()=> {changeAdd(false)}, 5000)
               } else {
                 // Set the error message
                 self.querySelector(`.${styles.message}`).innerText = 'Vyberte fotografie';
               }
             } else {
-              // Add the product to the cart
-              dispatch(addToCart(cartData));
+                // Add the product to the cart
+                dispatch(addToCart(cartData));
+                changeAdd(true)
+                clear(self)
+                setTimeout(()=> {changeAdd(false)}, 5000)
             }
+
           } catch {
             // Set the error message
             self.querySelector(`.${styles.message}`).innerText = 'Některé možnosti nejsou vybrané';
@@ -179,7 +208,6 @@ function Product({data}:props) {
         }
       }
     
-    console.log(data)
 
     return (  
         <>
@@ -291,11 +319,37 @@ function Product({data}:props) {
                                 </h2>
 
                                 <h2 className={styles.price}>
-                                    {price} {data.price_currency}
+                                    {Number(price) * quantity} {data.price_currency}
                                 </h2>
                             </div>
                             <div className={styles.add_to_cart}>
-                                <input type="submit" value="Koupit"/>
+                                
+                                {
+                                    added ?
+                                    <div className={styles.confirmation}>
+                                        <CheckCircle />
+                                        <h2>Přidáno do košíku</h2>
+                                    </div>
+                                    :
+                                    <div className={styles.submit}>
+                                        {
+                                            !data.input_photos &&
+                                            <div className={styles.amount}>
+                                                <div className={styles.count}><p>{quantity}</p></div>
+
+                                                <div className={styles.buttons}>
+                                                    <button type="button" onClick={() => {changeQuantity(quantity + 1)}}>
+                                                        <ChevronUp />
+                                                    </button>
+                                                    <button type="button" onClick={() => {if (quantity > 1){changeQuantity(quantity - 1)}}}>
+                                                        <ChevronDown />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        }
+                                        <input type="submit" value="Koupit"/>
+                                    </div>
+                                }
                                 <p>Krátké info o dopravě</p>
                             </div>
                             <p className={styles.message}></p>

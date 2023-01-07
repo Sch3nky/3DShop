@@ -9,9 +9,8 @@ function Products() {
     
     return (
         <>
+            <h2 className={styles.headline}>Oblíbené produkty</h2>
             <div className={styles.products_wrapper}>
-                    
-
                     <ul className={styles.grid}>
                     { [...Array(8)].map((x, i) =>
                         <li className={styles.product}>
