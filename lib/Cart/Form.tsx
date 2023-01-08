@@ -23,7 +23,11 @@ function Order_Form({submit, submitRef}:any) {
                 send[inputs[i].id] = inputs[i].value
             }
         }
-
+        const note:HTMLTextAreaElement = document.getElementById("order_note") as HTMLTextAreaElement
+        if (note){
+            send["note"] = note.value
+        }
+        
         submit(send)
     }
     
@@ -131,6 +135,7 @@ function Order_Form({submit, submitRef}:any) {
                     </div>
                 </div>
             }
+
             <div className={styles.input_container}>
                 <textarea placeholder="Poznámka k objednávce" id="order_note"></textarea>
                 <label htmlFor="country-invoice">Poznámka k objednávce</label>

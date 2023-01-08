@@ -15,12 +15,12 @@ function Objednavka({data}:any) {
     const router = useRouter()
     const shipment_id = router.query["shipment_id"]
     const [payment_id, payment_change] = React.useState()
-    const [price, price_change] = React.useState(0)
+    var price = 0
     const submitRef = React.useRef<HTMLElement>()
 
-    function SubmitForm(price:number){
+    function SubmitForm(price_l:number){
         if (submitRef.current){
-            price_change(price)
+            price = price_l
             submitRef.current.click()
         }
     }
@@ -28,7 +28,7 @@ function Objednavka({data}:any) {
     const cart = useSelector((state:any) => state.cart);
 
     async function Create_Order(data:data){
-        if (payment_id && price != 0){
+        if (payment_id && price !== 0){
             data["shipmentID"] = shipment_id
             data["paymentID"] = payment_id
             data["items"] = cart
@@ -42,6 +42,7 @@ function Objednavka({data}:any) {
                         body: JSON.stringify(data)
                         }
                         )
+
             .then(r => {return r.json()})
             .then(json => {if (json.status == 0){router.push("/kosik/info")}});  
         }
@@ -51,7 +52,7 @@ function Objednavka({data}:any) {
         if (cart.length == 0){
             router.push("/kosik")
         }
-    })
+    }, [])
 
     function getTotalPrice(){
         return Number(price) + Number(getPrice("shipping", Number(shipment_id))) + Number(getPrice("payments", Number(payment_id)))

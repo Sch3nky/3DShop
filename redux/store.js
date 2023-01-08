@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { cartReducer } from './cart.slice';
 
-import storage from 'redux-persist/lib/storage'
+import storage from 'redux-persist-indexeddb-storage';
 import {
   persistStore,
   persistReducer,
@@ -15,7 +15,7 @@ import {
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: storage("3D-DB"),
 }
 
 const persistedReducer = persistReducer(persistConfig, cartReducer)

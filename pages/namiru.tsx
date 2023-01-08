@@ -60,14 +60,18 @@ function Bespoke({data}:any) {
 }
 
 export async function getStaticProps(context:any) {
-    const res = await fetch("http://127.0.0.1:5000/get/on_order")
-    const data = await res.json()
-  
-    return {
-      props: {
-        data: data.data,
-      },
+    try{
+        const res = await fetch("http://127.0.0.1:5000/get/on_order")
+        const data = await res.json()
+    
+        return {
+        props: {
+            data: data.data,
+        },
+        }
     }
-  }
-
+    catch {
+        return { notFound: true };
+    }
+}
 export default Bespoke;

@@ -1,13 +1,9 @@
 import Head_global from "../../lib/global-head";
 import styles from "../../styles/Cart/Info.module.scss"
 import { XCircleFill } from "react-bootstrap-icons";
-import { useDispatch } from "react-redux";
-import { removeFromCart } from '../../redux/cart.slice';
 import Link from "next/link";
 
 function Buy_Info() {
-    const dispatch = useDispatch();
-    dispatch(removeFromCart(""));
     return (
         <>
             <Head_global name="Chyba"/>

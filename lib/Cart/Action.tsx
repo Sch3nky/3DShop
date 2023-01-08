@@ -92,7 +92,7 @@ function Action_module({progress, services, Cart, onSubmit, ship_data, changeShi
             <button className={styles.continue} onClick={onSubmit}>
                 Pokračovat
             </button>:
-            <button className={styles.continue} onClick={() => onSubmit(getPrice())}>
+            <button className={styles.continue} onClick={() => onSubmit(Number(getPrice()))}>
                 Dokončit
             </button>
             }

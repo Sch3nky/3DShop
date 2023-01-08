@@ -67,6 +67,7 @@ function Product({data}:props) {
               ) as HTMLInputElement;
             input.checked = false
         }
+
         if (data.input_photos) {
             // Select the photo input element
             const photoInput = document.getElementById(
@@ -116,6 +117,7 @@ function Product({data}:props) {
             let cartData: any = {
               id: data.id,
               options,
+              quantity
             };
       
             // Check if the product requires input photos
@@ -140,6 +142,7 @@ function Product({data}:props) {
                   id: data.id,
                   options,
                   photos,
+                  quantity
                 };
       
                 // Add the product to the cart
@@ -206,9 +209,8 @@ function Product({data}:props) {
             fileCountLabel.innerText = 'Kliknutím vyberte fotku';
           }
         }
-      }
+    }
     
-
     return (  
         <>
             <Head_global name={data.name}/>

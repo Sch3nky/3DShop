@@ -5,11 +5,11 @@ const cartSlice = createSlice({
   initialState: {cart:[]},
   reducers: {
     addToCart(state, action) {
-        const itemExists = state.cart.find((item) => (item.id === action.payload.id && JSON.stringify(item.options) == JSON.stringify(action.payload.options)));
+        const itemExists = state.cart.find((item) => (item.id === action.payload.id && JSON.stringify(item.options) == JSON.stringify(action.payload.options) && JSON.stringify(item.photos) == JSON.stringify(action.payload.photos)));
         if (itemExists) {
         itemExists.quantity++;
         } else {
-        state.cart.push({ ...action.payload, quantity: 1 });
+        state.cart.push({ ...action.payload, quantity: action.payload.quantity });
         }
     },
     incrementQuantity: (state, action) => {

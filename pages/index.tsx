@@ -12,12 +12,16 @@ export default function Home({data}: any) {
 }
 
 export async function getStaticProps(context:any) {
-  const res = await fetch("http://127.0.0.1:5000/get/")
-  const data = await res.json()
+  try {
+    const res = await fetch("http://127.0.0.1:5000/get/")
+    const data = await res.json()
 
-  return {
-    props: {
-      data,
-    },
+    return {
+      props: {
+        data,
+      },
+    }
+  } catch {
+    return { notFound: true };
   }
 }

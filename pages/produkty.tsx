@@ -84,11 +84,16 @@ function Products({data}:any) {
 export default Products;
 
 export async function getStaticProps(context:any) {
-    const res = await fetch("http://127.0.0.1:5000/get/products")
-    const data = await res.json()
-    return {
-      props: {
-        data,
-      },
+    try{
+        const res = await fetch("http://127.0.0.1:5000/get/products")
+        const data = await res.json()
+        return {
+        props: {
+            data,
+        },
+        }
     }
-  }
+    catch {
+        return { notFound: true };
+    }
+}
